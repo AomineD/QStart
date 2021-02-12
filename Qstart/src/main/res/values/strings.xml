@@ -1,4 +1,5 @@
 <resources>
+    <string name="app_name" translatable="false">This app</string>
     <string name="previous">Previous</string>
     <string name="next">Next</string>
     <!-- TODO: Remove or change this placeholder text -->
@@ -70,5 +71,9 @@
     <string name="emptyph">The photo is required</string>
     <string name="emptycountr">Country is required, select one</string>
     <string name="emptyge">Select your gender, is required</string>
+    <string name="permission_app">requires the following data to sign up:</string>
+    <string name="your_country">Your Country</string>
+    <string name="your_gender">Your gender</string>
+    <string name="some_ph">Upload some photo</string>
 
 </resources>

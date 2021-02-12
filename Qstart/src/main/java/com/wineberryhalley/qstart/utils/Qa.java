@@ -10,6 +10,7 @@ import android.os.Environment;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
@@ -31,11 +32,22 @@ public class Qa {
     public static final String ke_res = "MLQMDASDASD";
     public static final String am_mwql = "mawlfrkkmdsmkdsd";
 
-    public static void checkD(Activity activity){
-        if(tinyDB == null){
+    public static void checkD(Activity activity) {
+        if (tinyDB == null) {
             tinyDB = new TinyDB(activity);
             User.setTinyDB(tinyDB);
         }
+    }
+
+    public static void hideKeyboard(Activity activity) {
+        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        //Find the currently focused view, so we can grab the correct window token from it.
+        View view = activity.getCurrentFocus();
+        //If no view currently has focus, create a new one, just so we can grab a window token from it
+        if (view == null) {
+            view = new View(activity);
+        }
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
     private static TinyDB tinyDB;

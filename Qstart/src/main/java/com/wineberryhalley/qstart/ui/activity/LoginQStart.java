@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.animation.Animator;
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -22,9 +23,11 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Base64;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
+import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
@@ -64,16 +67,21 @@ public class LoginQStart extends AppCompatActivity implements Qa.UserListener, S
     private static boolean requirePhoto = false;
     private static boolean requireGender = false;
 
-    public static void requireCountry(){
+    private static int icon_res = 0;
+
+    public static void requireCountry(int appIconRes){
         requireCountry = true;
+        icon_res = appIconRes;
     }
 
-    public static void requirePhoto(){
+    public static void requirePhoto(int appIconRes){
         requirePhoto = true;
+        icon_res = appIconRes;
     }
 
-    public static void requireGender(){
+    public static void requireGender(int appIconRes){
         requireGender = true;
+        icon_res = appIconRes;
     }
 
     @Override
@@ -89,6 +97,7 @@ public class LoginQStart extends AppCompatActivity implements Qa.UserListener, S
         requireCountry = false;
         requirePhoto = false;
         requireGender = false;
+        icon_res = 0;
         writePermission = false;
     }
 
@@ -536,6 +545,9 @@ showSuccessTiming(getString(R.string.logged));
     private ImageView profile_img;
     private String profileUri = null;
     private AutoCompleteTextView usern;
+
+
+
     private void configureOptionals(){
 
         findViewById(R.id.signup_btn).setOnClickListener(new View.OnClickListener() {
@@ -594,6 +606,17 @@ showSuccessTiming(getString(R.string.logged));
         View countryRot = findViewById(R.id.rot_country);
         View gendRot = findViewById(R.id.rot_gender);
         usern = findViewById(R.id.username);
+        usern.setSingleLine(true);
+        usern.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if  ((actionId == EditorInfo.IME_ACTION_DONE)) {
+Qa.hideKeyboard(LoginQStart.this);
+                }
+                return false;
+
+            }
+        });
         View imgRot = findViewById(R.id.rot_img);
 
 findViewById(R.id.rot_lin_country).setOnClickListener(new View.OnClickListener() {
@@ -862,12 +885,35 @@ runOnUiThread(new Runnable() {
         YoYo.with(Techniques.FadeOut).duration(400).onEnd(new YoYo.AnimatorCallback() {
             @Override
             public void call(Animator animator) {
-                YoYo.with(Techniques.BounceIn).duration(670).onStart(new YoYo.AnimatorCallback() {
-                    @Override
-                    public void call(Animator animator) {
-                        findViewById(R.id.signup_rel).setVisibility(View.VISIBLE);
-                    }
-                }).playOn(findViewById(R.id.signup_rel));
+                if (requireAny()) {
+                    Log.e(TAG, "call: a" );
+
+                    RequireDialog requireDialog = new RequireDialog(new DialogInterface.OnDismissListener() {
+                        @Override
+                        public void onDismiss(DialogInterface dialog) {
+                            YoYo.with(Techniques.BounceIn).duration(670).onStart(new YoYo.AnimatorCallback() {
+                                @Override
+                                public void call(Animator animator) {
+                                    findViewById(R.id.signup_rel).setVisibility(View.VISIBLE);
+
+
+                                }
+                            }).playOn(findViewById(R.id.signup_rel));
+                        }
+                    });
+                    requireDialog.show(getSupportFragmentManager(), "reqm");
+
+                } else {
+
+                    YoYo.with(Techniques.BounceIn).duration(670).onStart(new YoYo.AnimatorCallback() {
+                        @Override
+                        public void call(Animator animator) {
+                            findViewById(R.id.signup_rel).setVisibility(View.VISIBLE);
+
+
+                        }
+                    }).playOn(findViewById(R.id.signup_rel));
+                }
             }
         }).playOn(relativeLayouts[0]);
 
@@ -895,7 +941,7 @@ this.c = selected;
     }
     private Country c;
 
-    public static class CountrySelection extends BottomBaseShet{
+    protected static class CountrySelection extends BottomBaseShet{
 
         protected CountrySelection(LoginQStart c, ArrayList<Country> arrayList, SelectedCountryListener listener){
             countries.addAll(arrayList);
@@ -941,6 +987,61 @@ select_btn.setOnClickListener(new View.OnClickListener() {
         }
 
 
+    }
+
+
+    public static class RequireDialog extends BottomBaseShet{
+
+        private DialogInterface.OnDismissListener onDismissListener;
+        protected RequireDialog(DialogInterface.OnDismissListener dismissListener){
+this.onDismissListener = dismissListener;
+        }
+
+        @Override
+        public int layoutID() {
+            return R.layout.dialog_required;
+        }
+
+        private ImageView imageView;
+        private TextView ttl, required;
+        private RoundButton ok;
+        @Override
+        public void OnStart() {
+            ok = find(R.id.ok_btn);
+
+            ttl = find(R.id.app_ttl);
+            required = find(R.id.requires);
+            imageView = find(R.id.app_aic);
+
+            if(icon_res != 0){
+                imageView.setImageResource(icon_res);
+            }
+
+            String tlu = getString(R.string.app_name)+" "+getString(R.string.permission_app);
+            ttl.setText(tlu);
+            String req = "";
+            if(requireCountry){
+                req = "◾"+getString(R.string.your_country)+"\n";
+            }
+            if(requireGender){
+                req = "◾"+getString(R.string.your_gender)+"\n";
+            }
+            if(requirePhoto){
+                req = "◾"+getString(R.string.some_ph);
+            }
+
+            required.setText(req);
+
+            ok.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(onDismissListener != null){
+                        onDismissListener.onDismiss(null);
+                    }
+                    dismissAllowingStateLoss();
+                }
+            });
+        }
     }
 
 }

@@ -46,7 +46,7 @@ ImageLoadingView imageLoadingView;
         imageLoadingView = findViewById(R.id.img_pic);
 
 
-     LoginQStart.requirePhoto();
+     LoginQStart.requirePhoto(R.drawable.smartphone);
 
 
       if(LoginQStart.isLogged(this)){
