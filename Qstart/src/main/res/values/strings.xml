@@ -1,0 +1,74 @@
+<resources>
+    <string name="previous">Previous</string>
+    <string name="next">Next</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="intro_1">Login with QStart is more fast, connect with your favorites apps with just one click</string>
+    <string name="intro_2">Without email and password, without personal information and optional data occasionally if the app requires it, just put your favorite username and go on!</string>
+    <string name="intro_3">When you success sign up in QStart you don\'t need to sign up anymore, and you can login in others apps without problems more quickly!</string>
+    <string name="intro_4">Let\'s start :)</string>
+    <string name="go_next">Continue</string>
+    <string name="titl_lg_qt">Login with QStart</string>
+    <string name="login_q">Login</string>
+    <string name="about_qs">What is QStart?</string>
+    <string name="required_lg">Login is required for this, please login with QStart</string>
+    <string name="qstart">QStart</string>
+    <string name="info__login">More fast, more secure that\'s what define QStart</string>
+    <string name="login__">Login now</string>
+
+
+    <!-- ANIMS -->
+    <string name="loading_anim_q">loading_qsl.json</string>
+    <string name="loading_t">Logging in…</string>
+    <string name="permissi_info">We need permission to logging with QStart</string>
+    <string name="give_permiss">Accept</string>
+    <string name="why_permi">Why need permission?</string>
+    <string name="permissi_wh">We need permission, cause save your info in you device help us to login more quick, without need of email or passwords!</string>
+    <string name="permiss_titl">Why need?</string>
+    <string name="ok_give_permiss">Ok back to permission</string>
+    <string name="permiss_succ">Permission granted :)</string>
+    <string name="permiss_nosucc">Oh permission denied :(</string>
+    <string name="retry">Retry</string>
+    <string name="ok">Ok</string>
+    <string name="android_q_s">"Apparently your device has Android 11 (R) and we need manage storage permission :D. \n click on accept and grant the permission "</string>
+    <string name="error_general">Oops something goes wrong :(</string>
+    <string name="error_internal">Internal error</string>
+    <string name="error_c">This app is no longer available with QStart</string>
+    <string name="signingup">No account found, signing up! :D</string>
+    <string name="signingup2">Signing up! :D</string>
+    <string name="logged">Success logged!</string>
+    <string name="error_loading">errorwarning.json</string>
+    <string name="signupaga">signupagain</string>
+    <string name="user_name">Username</string>
+    <string name="signup">Oh you are new here?\nSign up</string>
+    <string name="signupnow">Sign Up</string>
+    <string name="usa">USA</string>
+    <string name="titl_sl_co">Select your country</string>
+    <string name="select_c">Select</string>
+    <string name="country">Country (Optional)</string>
+    <string name="country2">Country (Required)</string>
+    <string name="change_c">Change</string>
+    <string name="loading_countries">Loading countries...</string>
+    <string name="non_c">NONE</string>
+    <string name="gend_c">Gender (Optional)</string>
+    <string name="gend_c2">Gender (Required)</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="img_prof">Profile Image (Optional)</string>
+    <string name="img_prof2">Profile Image (Required)</string>
+    <string name="upload">Upload photo</string>
+    <string name="emptyuser">The username can\'t be empty</string>
+    <string name="up_ph">Uploading your profile pic...</string>
+    <string name="usernam_exist">Username already taked :(</string>
+    <string name="check_usern_loading">Checking username availability</string>
+    <string name="success_anim">sc_qst.json</string>
+    <string name="succ">Success!</string>
+    <string name="permission_accept_lg">Permission accepted, now login!</string>
+    <string name="logging">Logging in...</string>
+    <string name="succ_logging">Logging successful!</string>
+    <string name="continue_like">Continue as</string>
+    <string name="emptyph">The photo is required</string>
+    <string name="emptycountr">Country is required, select one</string>
+    <string name="emptyge">Select your gender, is required</string>
+
+</resources>

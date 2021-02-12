@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/signup_rel"
+    android:layout_below="@id/header_lay"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="10dp"
+    android:padding="15dp"
+    android:visibility="gone"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/magic"
+            android:gravity="center"
+            android:padding="10dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/signup"
+            android:textAlignment="center"
+            android:textColor="@color/black2"
+            android:textSize="20sp"
+            android:textStyle="normal" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_field"
+            android:background="@drawable/user_ic"
+            android:orientation="horizontal">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginStart="55dp"
+                android:layout_marginEnd="20dp">
+
+                <AutoCompleteTextView
+                    android:id="@+id/username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/user_name"
+                    android:inputType="text"
+                    android:maxLength="60"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:theme="@style/Autocomplete" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1.5dp"
+            android:background="@color/gray"
+            android:layout_marginEnd="5dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="5dp"
+            />
+
+        <LinearLayout
+            android:id="@+id/rot_lin_country"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/country_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:fontFamily="@font/magic"
+                android:gravity="start"
+                android:padding="10dp"
+                android:text="@string/country"
+                android:textAlignment="textStart"
+                android:textColor="@color/black2"
+                android:textSize="20sp"
+                android:textStyle="normal" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="5dp"
+                app:cardBackgroundColor="@color/dark"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="4dp"
+                app:cardUseCompatPadding="true">
+
+                <ImageView
+                    android:id="@+id/rot_country"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_margin="5dp"
+
+                    app:srcCompat="@drawable/down_ic" />
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:id="@+id/country_linea"
+            android:visibility="gone"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+
+            <androidx.cardview.widget.CardView
+                app:cardBackgroundColor="@color/white"
+                app:cardElevation="9dp"
+                app:cardUseCompatPadding="true"
+                app:cardCornerRadius="5dp"
+                android:layout_width="150dp"
+                android:layout_height="180dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:padding="5dp"
+                    android:layout_height="wrap_content">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_weight="1"
+                        android:layout_height="0dp">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:id="@+id/img_country"
+                            android:layout_centerInParent="true"
+                            android:layout_gravity="center"
+                            />
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            app:lottie_autoPlay="true"
+                            app:lottie_fileName="@string/loading_anim_q"
+                            android:layout_gravity="center"
+                            app:lottie_loop="true"
+                            android:scaleType="centerCrop"
+                            android:id="@+id/loading_anim"
+                            android:layout_centerInParent="true"
+                            />
+                    </RelativeLayout>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/magic"
+                        android:gravity="center"
+                        android:id="@+id/text_country"
+                        android:padding="10dp"
+                        android:layout_marginTop="5dp"
+                        android:text="@string/usa"
+                        android:textAlignment="center"
+                        android:textColor="@color/black2"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+            <com.wineberryhalley.qstart.ui.views.RoundButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/select_country"
+                app:buttonElevation="10dp"
+                android:layout_gravity="center_vertical"
+                app:textPadding="8dp"
+                app:textBold="true"
+                app:buttonRadius="8dp"
+                app:textSize="16"
+                app:backgroundColor="@color/dark"
+                app:textColor="@color/white"
+                app:text="@string/change_c"
+                />
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1.5dp"
+            android:background="@color/gray"
+            android:layout_marginEnd="5dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="5dp"
+            />
+
+        <LinearLayout
+            android:id="@+id/rot_lin_gend"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/gender_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:fontFamily="@font/magic"
+                android:gravity="start"
+                android:padding="10dp"
+                android:text="@string/gend_c"
+                android:textAlignment="textStart"
+                android:textColor="@color/black2"
+                android:textSize="20sp"
+                android:textStyle="normal" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="5dp"
+                app:cardBackgroundColor="@color/dark"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="4dp"
+                app:cardUseCompatPadding="true">
+
+                <ImageView
+                    android:id="@+id/rot_gender"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_margin="5dp"
+
+                    app:srcCompat="@drawable/down_ic" />
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:id="@+id/gender_card"
+            app:cardCornerRadius="8dp"
+            app:cardUseCompatPadding="true"
+            app:cardElevation="5dp"
+            app:cardBackgroundColor="@color/dark"
+            android:visibility="gone"
+            android:layout_height="wrap_content">
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:layout_width="match_parent"
+                android:layout_margin="7dp"
+                android:id="@+id/gender_spinner"
+                android:layout_height="wrap_content"
+                android:background="@drawable/spiner_back"
+                android:spinnerMode="dropdown"
+                />
+        </androidx.cardview.widget.CardView>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1.5dp"
+            android:background="@color/gray"
+            android:layout_marginEnd="5dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="5dp"
+            />
+
+        <LinearLayout
+            android:id="@+id/rot_photo_lin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/photo_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:fontFamily="@font/magic"
+                android:gravity="start"
+                android:padding="10dp"
+                android:text="@string/img_prof"
+                android:textAlignment="textStart"
+                android:textColor="@color/black2"
+                android:textSize="20sp"
+                android:textStyle="normal" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="5dp"
+                app:cardBackgroundColor="@color/dark"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="4dp"
+                app:cardUseCompatPadding="true">
+
+                <ImageView
+                    android:id="@+id/rot_img"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_margin="5dp"
+                    app:srcCompat="@drawable/down_ic" />
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:id="@+id/img_lay"
+            android:visibility="gone"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                app:srcCompat="@drawable/placeholder_img"
+                android:layout_margin="5dp"
+                android:scaleType="fitXY"
+                android:layout_gravity="center_vertical"
+                android:id="@+id/img_preview"
+                />
+
+            <com.wineberryhalley.qstart.ui.views.RoundButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/upload_photo"
+                app:buttonElevation="10dp"
+                android:layout_gravity="center"
+                app:textPadding="8dp"
+                app:textBold="true"
+                app:buttonRadius="8dp"
+                app:textSize="16"
+                app:backgroundColor="@color/dark"
+                app:textColor="@color/white"
+                app:text="@string/upload"
+                />
+
+        </LinearLayout>
+
+        <com.wineberryhalley.qstart.ui.views.RoundButton
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/signup_btn"
+            android:layout_marginTop="20dp"
+            app:buttonElevation="10dp"
+            android:layout_gravity="center"
+            app:textPadding="8dp"
+            app:textBold="true"
+            app:buttonRadius="8dp"
+            app:textSize="16"
+            app:backgroundColor="@color/dark"
+            app:textColor="@color/white"
+            app:text="@string/signupnow"
+            />
+
+    </LinearLayout>
+
+
+</ScrollView>
