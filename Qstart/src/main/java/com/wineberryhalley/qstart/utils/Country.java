@@ -1,5 +1,7 @@
 package com.wineberryhalley.qstart.utils;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Locale;
@@ -8,6 +10,16 @@ import java.util.Map;
 public class Country {
     private String name;
     private String region;
+
+    public String getAlpha2Code() {
+        return alpha2Code;
+    }
+
+    public void setAlpha2Code(String alpha2Code) {
+        this.alpha2Code = alpha2Code;
+    }
+
+    private String alpha2Code;
 
     public String getName() {
         return name;
@@ -52,8 +64,9 @@ public class Country {
         if(langObjs.size() < 1){
             return name;
         }else{
-          String actualCountry =  Locale.getDefault().getCountry().toLowerCase();
+          String actualCountry =  Locale.getDefault().getLanguage().toLowerCase();
             for (int i = 0; i < langObjs.size(); i++) {
+            //    Log.e("MAIN", "getNameTranslated: "+langObjs.keySet().toArray()[0]+" "+actualCountry);
 if(langObjs.containsKey(actualCountry)){
     return langObjs.get(actualCountry);
 }

@@ -101,10 +101,12 @@ public class LoginQStart extends AppCompatActivity implements Qa.UserListener, S
     protected void onDestroy() {
         super.onDestroy();
         logingListener = null;
-        requireCountry = false;
-        requirePhoto = false;
-        requireGender = false;
-        icon_res = 0;
+        if(!writePermission) {
+            requireCountry = false;
+            requirePhoto = false;
+            requireGender = false;
+            icon_res = 0;
+        }
         writePermission = false;
     }
 
@@ -766,6 +768,7 @@ api.sendImage(profileUri, usern.getText().toString(), new Api.UploadListener() {
                     user.gender = appCompatSpinner.getSelectedItem().toString();
                     String def = Locale.getDefault().getDisplayCountry();
                     user.country = c == null ? def : c.getName();
+        //Log.e(TAG, "signUp: "+def );
                     user.imageUri = url;
                     showLoading(getString(R.string.signingup2));
         Qa.signUpNow(LoginQStart.this, user, LoginQStart.this);
@@ -783,7 +786,7 @@ api.sendImage(profileUri, usern.getText().toString(), new Api.UploadListener() {
             user.username = usern.getText().toString();
             user.gender = appCompatSpinner.getSelectedItem().toString();
             String def = Locale.getDefault().getDisplayCountry();
-            Log.e(TAG, "signUp: "+def );
+    //        Log.e(TAG, "signUp: "+def );
             user.country = c == null ? def : c.getName();
 
 showLoading(getString(R.string.signingup2));
@@ -814,6 +817,9 @@ Qa.signUpNow(this, user, this);
             @Override
             public void onAnimationEnd(Animation animation) {
                 view.setVisibility(View.GONE);
+                if(view.getId() == R.id.gender_card){
+                    findViewById(R.id.gender_spinner).setVisibility(View.GONE);
+                }
             }
 
             @Override
@@ -826,6 +832,9 @@ Qa.signUpNow(this, user, this);
 
     // slide the view from its current position to below itself
     private void slideDown(View view){
+        if(view.getId() == R.id.gender_card){
+            findViewById(R.id.gender_spinner).setVisibility(View.VISIBLE);
+        }
         view.setVisibility(View.VISIBLE);
         Animation anim = new ScaleAnimation(
                 1f, 1f, // Start and end values for the X axis scaling
@@ -919,7 +928,7 @@ runOnUiThread(new Runnable() {
             @Override
             public void call(Animator animator) {
                 if (requireAny()) {
-                    Log.e(TAG, "call: a" );
+                  //  Log.e(TAG, "call: a" );
 
                     RequireDialog requireDialog = new RequireDialog(new DialogInterface.OnDismissListener() {
                         @Override
@@ -968,13 +977,13 @@ if(selected == null){
     txt.setText(R.string.non_c);
 }else{
     txt.setText(selected.getNameTranslated());
-    PicassoUtils.loadImageSVG(this, selected.getFlag(), country_flag, lt_country);
+    PicassoUtils.loadCountryFlag(selected.getAlpha2Code(), country_flag, lt_country);
 }
 this.c = selected;
     }
     private Country c;
 
-    protected static class CountrySelection extends BottomBaseShet{
+    public static class CountrySelection extends BottomBaseShet{
 
         protected CountrySelection(LoginQStart c, ArrayList<Country> arrayList, SelectedCountryListener listener){
             countries.addAll(arrayList);

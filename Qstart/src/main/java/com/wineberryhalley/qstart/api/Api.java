@@ -32,6 +32,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Hashtable;
+import java.util.Iterator;
 import java.util.Map;
 
 import static com.wineberryhalley.qstart.utils.Qa.am_mwql;
@@ -287,6 +288,11 @@ listenerGenre.Exist();
                         JSONObject al = obj.getJSONObject("translations");
                         Type mapType = new TypeToken<Map<String, String>>(){}.getType();
                         Map<String, String> son = new Gson().fromJson(al.toString(), mapType);
+                       /* for (String key : son.keySet()) {
+                            String value = son.get(key);
+                          //  Toast.makeText(ctx, "Key: " + key + " Value: " + value, Toast.LENGTH_LONG).show();
+                          //  Log.e("MAIN", "onResponse: "+key+" value: "+value );
+                        }*/
                     country.setLangObjs(son);
 
                     countries.add(country);
@@ -350,7 +356,7 @@ queue.getCache().clear();
      StringRequest stringRequest = new StringRequest(Request.Method.POST, up, new Response.Listener<String>() {
          @Override
          public void onResponse(String response) {
-         //   Log.e("MAIN", response);
+           Log.e("MAIN", response);
 
              try {
                  JSONObject jsonObject = new JSONObject(response);

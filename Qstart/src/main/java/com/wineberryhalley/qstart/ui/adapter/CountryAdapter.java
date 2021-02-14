@@ -87,14 +87,14 @@ private LottieAnimationView lt;
                 cardView.setCardBackgroundColor(getContext().getResources().getColor(R.color.dark));
                 tt.setTextColor(Color.WHITE);
                 lt.setVisibility(View.VISIBLE);
-                PicassoUtils.loadImageSVG(getContext(), model.getFlag(), img_country, lt);
+                PicassoUtils.loadCountryFlag(model.getAlpha2Code(), img_country, lt);
             }else{
             //    Log.e("MAIN", "setConfig: "+model.getFlag());
                 cardView.setCardBackgroundColor(Color.WHITE);
                tt.setTextColor(getContext().getResources().getColor(R.color.black2));
                 tt.setText(model.getNameTranslated());
                 lt.setVisibility(View.VISIBLE);
-                PicassoUtils.loadImageSVG(getContext(), model.getFlag(), img_country, lt);
+                PicassoUtils.loadCountryFlag(model.getAlpha2Code(), img_country, lt);
             }
         }
 

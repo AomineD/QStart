@@ -6,9 +6,9 @@
   <string name="hello_blank_fragment">Hello blank fragment</string>
   <string name="intro_1">Iniciar sesión con QStart es más rápido, conéctese con sus aplicaciones favoritas con solo un clic</string>
   <string name="intro_2">Sin correo electrónico y contraseña, sin información personal y datos opcionales ocasionalmente si la aplicación lo requiere, ¡solo ingrese su nombre de usuario favorito y continúe!</string>
-  <string name="intro_3">Cuando se registre con éxito en QStart, ya no tendrá que registrarse y podrá iniciar sesión en otras aplicaciones sin problemas más rápidamente.</string>
+  <string name="intro_3">Cuando se registre con éxito en QStart, ya no tendrá que registrarse de nuevo en otras apps que tengan QStart como inicio de sesion y podrá iniciar sesión en otras aplicaciones sin problemas más rápidamente.</string>
   <string name="intro_4">Empecemos :)</string>
-  <string name="go_next">Seguir</string>
+  <string name="go_next">Continuar</string>
   <string name="titl_lg_qt">Iniciar sesión con QStart</string>
   <string name="login_q">Iniciar</string>
   <string name="about_qs">¿Qué es QStart?</string>

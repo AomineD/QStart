@@ -6,7 +6,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="intro_1">Login with QStart is more fast, connect with your favorites apps with just one click</string>
     <string name="intro_2">Without email and password, without personal information and optional data occasionally if the app requires it, just put your favorite username and go on!</string>
-    <string name="intro_3">When you success sign up in QStart you don\'t need to sign up anymore, and you can login in others apps without problems more quickly!</string>
+    <string name="intro_3">When you success sign up in QStart you don\'t need to sign up anymore again in apps that login with QStart and you can login in others apps without problems more quickly!</string>
     <string name="intro_4">Let\'s start :)</string>
     <string name="go_next">Continue</string>
     <string name="titl_lg_qt">Login with QStart</string>
