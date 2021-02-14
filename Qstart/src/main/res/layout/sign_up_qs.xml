@@ -342,6 +342,8 @@
 
         </LinearLayout>
 
+
+
         <com.wineberryhalley.qstart.ui.views.RoundButton
             android:layout_width="240dp"
             android:layout_height="wrap_content"
@@ -358,6 +360,18 @@
             app:text="@string/signupnow"
             />
 
+        <TextView
+            android:id="@+id/policy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:text="@string/priv_st"
+            android:textAlignment="center"
+            android:textColor="@color/black2"
+            android:textSize="16sp"
+            android:textStyle="bold" />
     </LinearLayout>
 
 

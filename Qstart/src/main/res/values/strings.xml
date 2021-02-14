@@ -75,5 +75,8 @@
     <string name="your_country">Your Country</string>
     <string name="your_gender">Your gender</string>
     <string name="some_ph">Upload some photo</string>
+    <string name="close_">Close</string>
+    <string name="priv_st">By sign up, you accept the </string>
+    <string name="wn_pol">Wineberry Privacy Policy</string>
 
 </resources>

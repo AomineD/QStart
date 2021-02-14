@@ -69,4 +69,12 @@
   <string name="emptyph">La foto es obligatoria</string>
   <string name="emptycountr">El país es obligatorio, seleccione uno</string>
   <string name="emptyge">Seleccione su género, es obligatorio</string>
+  <string name="permission_app">requiere lo siguiente para registrarte:</string>
+  <string name="your_country">Tu país de residencia</string>
+  <string name="your_gender">Tu genero</string>
+  <string name="some_ph">Subir alguna foto de perfil</string>
+
+  <string name="close_">Cerrar</string>
+  <string name="priv_st">Al registrarte, aceptas la </string>
+  <string name="wn_pol">Política de Privacidad de Wineberry</string>
 </resources>

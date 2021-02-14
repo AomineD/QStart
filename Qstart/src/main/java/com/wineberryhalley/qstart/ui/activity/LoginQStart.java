@@ -21,6 +21,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.text.SpannableString;
 import android.util.Base64;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -33,6 +34,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
@@ -47,18 +49,23 @@ import com.wineberryhalley.qstart.base.PicassoUtils;
 import com.wineberryhalley.qstart.base.User;
 import com.wineberryhalley.qstart.ui.adapter.CountryAdapter;
 import com.wineberryhalley.qstart.ui.views.RoundButton;
+import com.wineberryhalley.qstart.ui.views.WebFloating;
 import com.wineberryhalley.qstart.utils.Country;
 import com.wineberryhalley.qstart.utils.LoginInterface;
 import com.wineberryhalley.qstart.utils.Qa;
 import com.wineberryhalley.qstart.utils.SelectedCountryListener;
+import com.wineberryhalley.qstart.utils.TextU;
 import com.wineberryhalley.qstart.utils.Timer;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Locale;
 
 import static com.wineberryhalley.qstart.utils.Qa.am_mwql;
 import static com.wineberryhalley.qstart.utils.Qa.ke_res;
+import static com.wineberryhalley.qstart.utils.TextU.makeLinkSpan;
+import static com.wineberryhalley.qstart.utils.TextU.makeLinksFocusable;
 
 public class LoginQStart extends AppCompatActivity implements Qa.UserListener, SelectedCountryListener {
 
@@ -604,6 +611,29 @@ showSuccessTiming(getString(R.string.logged));
         });
 
         View countryRot = findViewById(R.id.rot_country);
+        TextView tv = findViewById(R.id.policy);
+
+        String pol = "\n "+getString(R.string.wn_pol);
+        SpannableString link = makeLinkSpan(getResources().getColor(R.color.dark), pol, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // respond to click
+        //        Toast.makeText(LoginQStart.this, "Privacy", Toast.LENGTH_SHORT).show();
+                WebFloating.showWeb(LoginQStart.this);
+            }
+        });
+        // Set the TextView's text
+        tv.setText(R.string.priv_st);
+
+        // Append the link we created above using a function defined below.
+        tv.append(link);
+
+        // Append a period (this will not be a link).
+        tv.append(".");
+
+        // This line makes the link clickable!
+        makeLinksFocusable(tv);
+
         View gendRot = findViewById(R.id.rot_gender);
         usern = findViewById(R.id.username);
         usern.setSingleLine(true);
@@ -734,7 +764,8 @@ api.sendImage(profileUri, usern.getText().toString(), new Api.UploadListener() {
 
                     user.username = usern.getText().toString();
                     user.gender = appCompatSpinner.getSelectedItem().toString();
-                    user.country = c == null ? "Ninguno" : c.getName();
+                    String def = Locale.getDefault().getDisplayCountry();
+                    user.country = c == null ? def : c.getName();
                     user.imageUri = url;
                     showLoading(getString(R.string.signingup2));
         Qa.signUpNow(LoginQStart.this, user, LoginQStart.this);
@@ -751,7 +782,9 @@ api.sendImage(profileUri, usern.getText().toString(), new Api.UploadListener() {
 
             user.username = usern.getText().toString();
             user.gender = appCompatSpinner.getSelectedItem().toString();
-            user.country = c == null ? "Ninguno" : c.getName();
+            String def = Locale.getDefault().getDisplayCountry();
+            Log.e(TAG, "signUp: "+def );
+            user.country = c == null ? def : c.getName();
 
 showLoading(getString(R.string.signingup2));
 Qa.signUpNow(this, user, this);
