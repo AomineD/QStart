@@ -1,3 +1,3 @@
-include ':Qstart'
+include ':QstartLib'
 include ':app'
 rootProject.name = "Qstart"

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="RoundButton">
+        <attr name="backgroundColor" format="color" />
+        <attr name="text" format="string"></attr>
+        <attr name="textColor" format="color"></attr>
+        <attr name="textBold" format="boolean"></attr>
+        <attr name="textSize" format="integer"></attr>
+        <attr name="textPadding" format="dimension"></attr>
+        <attr name="buttonRadius" format="dimension"></attr>
+        <attr name="buttonElevation" format="dimension"></attr>
+    </declare-styleable>
+    <declare-styleable name="ImageLoadingView">
+        <attr name="assetName" format="string"/>
+    </declare-styleable>
+</resources>
