@@ -1,15 +1,26 @@
+import org.gradle.internal.jvm.Jvm
+
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     repositories {
         google()
         jcenter()
+        maven {
+            url 'https://maven.google.com'
+        }
     }
     dependencies {
         classpath "com.android.tools.build:gradle:4.1.1"
         classpath 'com.google.gms:google-services:4.3.4'
-
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.4.1'
+//        implementation files(Jvm.current().toolsJar)
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
+    }
+
+    subprojects {
+        tasks.withType(Javadoc).all { enabled = false }
     }
 }
 
@@ -17,10 +28,36 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven {
+            url 'https://maven.google.com'
+        }
         maven { url 'https://jitpack.io' }
     }
 }
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+ext {
+    bintrayRepo = 'QStart' // Repo name in bintray dashboard
+    bintrayName = 'com.wineberryhalley.libs' // package name of the bintray repo
+
+    publishedGroupId = 'com.wineberryhalley.libs'   // this is the ID we want to see in implementation line
+    libraryName = 'QStart'     // this is the module name of library
+    artifact = 'qstart'        // this is the artifact we want to see in implementation line
+
+    libraryDescription = 'none' // description of library
+
+    siteUrl = 'https://app.wineberryhalley.cloud'    // git repo url
+    gitUrl = 'https://gitlab.com/shaiyafusion30/qstart.git' // git repo vcs url
+
+    libraryVersion = 'v1.0.0'      // library version
+
+    developerId = 'aomined'                // This is your bintray username
+    developerName = 'aomined'              // Developer's name
+    developerEmail = 'shaiyafusion30@gmail.com'                // Developer's email
+
+    licenseName = 'The Apache Software License, Version 2.0'  // for example, The Apache Software License, Version 2.0
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'   // for example, http://www.apache.org/licenses/LICENSE-2.0.txt
+    allLicenses = ["Apache-2.0"]    // array of licenses, for example, ["Apache-2.0"]
 }
