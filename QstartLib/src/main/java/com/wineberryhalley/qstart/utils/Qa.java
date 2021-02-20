@@ -55,9 +55,9 @@ public class Qa {
         return canReadAndWrite(activity) && tinyDB.getUserLogged() != null && !tinyDB.getUserLogged().user_id.equals("") && tinyDB.getUserLogged().status;
     }
 
-    public static void checkUserAvailibity(Activity activity, CheckListener listener){
+    public static void checkUserAvailibity(Activity activity, String abu,CheckListener listener){
         checkD(activity);
-        Api api = Api.get(activity);
+        Api api = Api.get(activity, abu);
         String usid = "";
         if(isLogged(activity)){
         //    Log.e("MAIN", "checkUserAvailibity: akja" );
@@ -78,7 +78,7 @@ public class Qa {
                 Log.e("MAIN", "onError: "+erno );
                 if(erno.contains("User id not valid")){
                     deleteData();
-                    checkFile(activity, new UserListener() {
+                    checkFile(activity, abu, new UserListener() {
                         @Override
                         public void onSignUp(User user) {
                             listener.onSuccess(user);
@@ -113,7 +113,7 @@ public class Qa {
 
     public static void loginUser(Activity activity, UserListener listener){
         checkD(activity);
-        Api api = Api.get(activity);
+        Api api = Api.get(activity, activity.getPackageName());
         String usid = "";
         if(isLogged(activity)){
             //    Log.e("MAIN", "checkUserAvailibity: akja" );
@@ -155,7 +155,7 @@ public class Qa {
     }
 
 
-    public static void checkFile(Activity activity, UserListener userListener) {
+    public static void checkFile(Activity activity,String abb,UserListener userListener) {
 
         Thread t = new Thread(new Runnable() {
             @Override
@@ -179,44 +179,6 @@ public class Qa {
                         l.showLoading(activity.getString(R.string.signingup));
                     }
 userListener.needSignUp();
-                 /*   api.signup(new Api.StatusListener() {
-                        @Override
-                        public void onLoad(User user) {
-
-                            File gpxfile = new File(folder, "lgn");
-
-                            //       Log.e("MAIN", "onLoad: "+user.user_id );
-                            FileWriter writer = null;
-                            try {
-                                if(!gpxfile.exists()){
-                                    gpxfile.createNewFile();
-                                }
-                                writer = new FileWriter(gpxfile);
-
-                                writer.append(user.user_id);
-                                writer.flush();
-                                writer.close();
-                                user.saveUser();
-
-                                //    Toast.makeText(activity, "Saved", Toast.LENGTH_SHORT).show();
-                                //      Log.e("MAIN", "onLoad: saved in "+gpxfile.getAbsolutePath() );
-                                //    activity.hideLoading();
-                                userListener.onSignUp(user);
-                            } catch (IOException e) {
-                                Log.e("MAIN", "IO Exc: "+e.getMessage() );
-                                e.printStackTrace();
-                            }
-                        }
-
-                        @Override
-                        public void onError(String erno) {
-                            //     activity.hideLoading();
-                            userListener.onError(erno);
-                            Log.e("MAIN", "onError SIG: "+erno );
-                        }
-                    });
-*/
-
                 }else{
                     if(tinyDB.getUserLogged() != null && !tinyDB.getUserLogged().user_id.isEmpty()) {
                         userListener.onChecked(tinyDB.getUserLogged().user_id);
@@ -227,7 +189,7 @@ userListener.needSignUp();
                             User user = new User();
                             user.user_id = contents;
                             Log.e("MAIN", "run: "+contents );
-                            checkUserAvailibity(activity, new CheckListener() {
+                            checkUserAvailibity(activity, abb, new CheckListener() {
                                 @Override
                                 public void onSuccess(User user) {
                                     user.saveUser();
@@ -253,8 +215,8 @@ userListener.needSignUp();
 
     }
 
-    public static void signUpNow(Activity activity, User user, UserListener userListener){
-        Api api = Api.get(activity);
+    public static void signUpNow(Activity activity, String abu, User user, UserListener userListener){
+        Api api = Api.get(activity, abu);
         File fail = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS);
         //      String path = fail.getAbsolutePath().replace(activity.getPackageName()+"/files", "");
 

@@ -146,7 +146,7 @@ img.loadImgCircle(R.drawable.placeholder_img);
 
     }
     private void passToBig(){
-        LoginQStart.init(getActivity(), k);
+        LoginQStart.init(getActivity(), k, getActivity().getPackageName());
         dismissAllowingStateLoss();
     }
 

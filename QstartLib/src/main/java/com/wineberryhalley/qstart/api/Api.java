@@ -40,8 +40,10 @@ import static com.wineberryhalley.qstart.utils.Qa.am_mwql;
 public class Api {
     RequestQueue queue;
     private Activity activity;
-    protected Api(Activity activity){
+    private String ak;
+    protected Api(Activity activity, String ak){
 queue = Volley.newRequestQueue(activity);
+this.ak = ak;
 this.activity = activity;
         SharedPreferences a = activity.getSharedPreferences("qkt", Context.MODE_PRIVATE);
 
@@ -57,8 +59,8 @@ setk(a.getString(am_mwql, ""));
     String signup = URL+"signup";
     String up = URL+"upImg";
 
-    public static Api get(Activity activity){
-      return new Api(activity);
+    public static Api get(Activity activity, String ej){
+      return new Api(activity, ej);
     }
 
 

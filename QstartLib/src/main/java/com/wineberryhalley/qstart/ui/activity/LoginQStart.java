@@ -76,6 +76,8 @@ public class LoginQStart extends AppCompatActivity implements Qa.UserListener, S
 
     private static int icon_res = 0;
 
+
+
     public static void requireCountry(int appIconRes){
         requireCountry = true;
         icon_res = appIconRes;
@@ -112,10 +114,12 @@ public class LoginQStart extends AppCompatActivity implements Qa.UserListener, S
 
     private static LoginInterface logingListener;
     private static boolean writePermission = false;
-    public static void init(Activity context, String key) {
+    private static String abb = "jeje";
+    public static void init(Activity context, String key, String abu) {
         goodInit = true;
         SharedPreferences sharedPreferences = context.getSharedPreferences("qkt", MODE_PRIVATE);
         sharedPreferences.edit().putString(am_mwql, key).apply();
+        abb = abu;
         if (context instanceof LoginInterface) {
             logingListener = (LoginInterface) context;
         }
@@ -197,7 +201,7 @@ public class LoginQStart extends AppCompatActivity implements Qa.UserListener, S
                // Log.e(TAG, "onClick: a "+Qa.canReadAndWrite(LoginQStart.this) );
                 if(Qa.canReadAndWrite(LoginQStart.this)){
                     showLoading();
-Qa.checkFile(LoginQStart.this, LoginQStart.this);
+Qa.checkFile(LoginQStart.this, abb,LoginQStart.this);
       }else{
 moveToNext();
       }
@@ -229,7 +233,7 @@ moveToNext();
             @Override
             public void onClick(View v) {
                 showLoading(getString(R.string.loading_countries));
-                Api api = Api.get(LoginQStart.this);
+                Api api = Api.get(LoginQStart.this, abb);
                 api.getCountries(new Api.CountryListener() {
                     @Override
                     public void onLoad(ArrayList<Country> countries) {
@@ -730,7 +734,7 @@ profile_img = findViewById(R.id.img_preview);
     }
 
     private void checkUsernm(){
-        Api api = Api.get(this);
+        Api api = Api.get(this, abb);
         showLoading(getString(R.string.check_usern_loading));
         api.checkUserName(usern.getText().toString(), new Api.CheckListener() {
             @Override
@@ -771,7 +775,7 @@ api.sendImage(profileUri, usern.getText().toString(), new Api.UploadListener() {
         //Log.e(TAG, "signUp: "+def );
                     user.imageUri = url;
                     showLoading(getString(R.string.signingup2));
-        Qa.signUpNow(LoginQStart.this, user, LoginQStart.this);
+        Qa.signUpNow(LoginQStart.this, abb,user, LoginQStart.this);
     }
 
     @Override
@@ -790,7 +794,7 @@ api.sendImage(profileUri, usern.getText().toString(), new Api.UploadListener() {
             user.country = c == null ? def : c.getName();
 
 showLoading(getString(R.string.signingup2));
-Qa.signUpNow(this, user, this);
+Qa.signUpNow(this, abb, user, this);
         }
 
 
