@@ -74,6 +74,30 @@ viewPager = findViewById(R.id.viewpag_intro);
 pageIndicatorView.setViewPager(viewPager);
 introPagerAdapter = new IntroPagerAdapter(this, introFragments);
 viewPager.setAdapter(introPagerAdapter);
+viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+      //  Log.e("MAIN", "onPageScrolled: ");
+        if((position+1) == introFragments.size()){
+            nextText.setText(getString(R.string.go_next));
+            canContinue = true;
+        }else
+        if(position < introFragments.size()){
+            canContinue = false;
+            nextText.setText(R.string.next);
+        }
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+
+    }
+});
 
 findViewById(R.id.next_btn).setOnClickListener(clicking(TypeClickBtn.NEXT));
 

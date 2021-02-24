@@ -64,7 +64,7 @@
   <string name="succ">¡Éxito!</string>
   <string name="permission_accept_lg">Permiso aceptado, ¡ahora inicia sesión!</string>
   <string name="logging">Iniciando sesión…</string>
-  <string name="succ_logging">¡Registro exitoso!</string>
+  <string name="succ_logging">¡Inicio exitoso!</string>
   <string name="continue_like">Continuar como</string>
   <string name="emptyph">La foto es obligatoria</string>
   <string name="emptycountr">El país es obligatorio, seleccione uno</string>
