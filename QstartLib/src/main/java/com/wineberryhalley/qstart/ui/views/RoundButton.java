@@ -60,7 +60,7 @@ public class RoundButton extends RelativeLayout {
         init(attrs);
     }
 
-    private void init(AttributeSet attrs){
+    public void init(AttributeSet attrs){
         TypedArray a = getContext().getTheme().obtainStyledAttributes(attrs,
                 R.styleable.RoundButton, 0, 0);
 

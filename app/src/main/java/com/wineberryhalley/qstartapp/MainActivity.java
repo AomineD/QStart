@@ -21,6 +21,7 @@ import com.wineberryhalley.qstart.base.User;
 import com.wineberryhalley.qstart.intro.IntroQStart;
 import com.wineberryhalley.qstart.ui.activity.LoginQStart;
 import com.wineberryhalley.qstart.ui.views.ImageLoadingView;
+import com.wineberryhalley.qstart.ui.views.QStartLoginButton;
 import com.wineberryhalley.qstart.ui.views.RoundButton;
 import com.wineberryhalley.qstart.utils.LoginInterface;
 import com.wineberryhalley.qstart.utils.LoginQStartBottom;
@@ -48,6 +49,13 @@ ImageLoadingView imageLoadingView;
 
      LoginQStart.requirePhoto(R.drawable.smartphone);
 
+        QStartLoginButton q = findViewById(R.id.qstlg);
+        q.setClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LoginQStartBottom.loginRequiredPopUp(MainActivity.this, key, true);
+            }
+        });
 
       if(LoginQStart.isLogged(this)){
           Toast.makeText(this, "Logged", Toast.LENGTH_SHORT).show();

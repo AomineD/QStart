@@ -13,4 +13,12 @@
     <declare-styleable name="ImageLoadingView">
         <attr name="assetName" format="string"/>
     </declare-styleable>
+
+    <declare-styleable name="QStartLoginButton">
+        <attr name="typetext" format="enum">
+            <enum name="normal" value="0"/>
+            <enum name="new_in" value="1"/>
+            <enum name="suggestion" value="2"/>
+        </attr>
+    </declare-styleable>
 </resources>

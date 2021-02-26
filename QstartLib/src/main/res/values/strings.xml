@@ -79,4 +79,7 @@
     <string name="priv_st">By sign up, you accept the </string>
     <string name="wn_pol">Wineberry Privacy Policy</string>
 
+    <string name="login_b_1">Login with QStart</string>
+    <string name="login_b_2">Login in with QStart</string>
+    <string name="login_b_3">Quick start with QStart</string>
 </resources>

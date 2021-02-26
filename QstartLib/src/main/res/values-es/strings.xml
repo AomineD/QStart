@@ -77,4 +77,8 @@
   <string name="close_">Cerrar</string>
   <string name="priv_st">Al registrarte, aceptas la </string>
   <string name="wn_pol">Política de Privacidad de Wineberry</string>
+
+  <string name="login_b_1">Iniciar con QStart</string>
+  <string name="login_b_2">Iniciar Sesión con QStart</string>
+  <string name="login_b_3">Inicio rápido con Qstart</string>
 </resources>

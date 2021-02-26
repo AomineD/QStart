@@ -36,6 +36,15 @@
             app:textSize="18">
 
         </com.wineberryhalley.qstart.ui.views.RoundButton>
+
+
+        <com.wineberryhalley.qstart.ui.views.QStartLoginButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:id="@+id/qstlg"
+            />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
