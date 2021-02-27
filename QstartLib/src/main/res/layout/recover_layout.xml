@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="10dp"
+    android:padding="15dp"
+    android:layout_below="@id/header_lay"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/magic"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="@string/rcver"
+        android:textAlignment="center"
+        android:textColor="@color/black2"
+        android:textSize="20sp"
+        android:textStyle="normal" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_field"
+        android:background="@drawable/user_ic"
+        android:orientation="horizontal">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginStart="55dp"
+            android:layout_marginEnd="20dp">
+
+            <AutoCompleteTextView
+                android:id="@+id/username_rec"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/user_name"
+                android:inputType="text"
+                android:maxLength="60"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:theme="@style/Autocomplete" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_field"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/userpas_ic"
+            android:orientation="horizontal">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginStart="55dp"
+                android:layout_marginEnd="20dp">
+
+                <AutoCompleteTextView
+                    android:id="@+id/passrecover"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/password_r"
+                    android:inputType="textPassword"
+                    android:maxLength="60"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:theme="@style/Autocomplete" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <com.wineberryhalley.qstart.ui.views.RoundButton
+            android:id="@+id/recover_btn"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            app:backgroundColor="@color/dark"
+            app:buttonElevation="10dp"
+            app:buttonRadius="8dp"
+            app:text="@string/recover_now"
+            app:textBold="true"
+            app:textColor="@color/white"
+            app:textPadding="8dp"
+            app:textSize="16" />
+
+        <com.wineberryhalley.qstart.ui.views.RoundButton
+            android:id="@+id/back_btn"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            app:backgroundColor="@color/white"
+            app:buttonElevation="10dp"
+            app:buttonRadius="8dp"
+            app:text="@string/back_str"
+            app:textBold="true"
+            app:textColor="@color/black2"
+            app:textPadding="8dp"
+            app:textSize="16" />
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -16,10 +16,12 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-
+buildConfigField("String", "m_url_", '"https://wineberryhalley.cloud/api/sqst/api/"')
+        buildConfigField("String", "a_cmmon", '"m_url_"')
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
     }
+
 
     buildTypes {
         release {

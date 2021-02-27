@@ -7,7 +7,13 @@
     <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"/>
 
     <application android:requestLegacyExternalStorage="true">
-        <activity android:name=".ui.activity.LoginQStart" android:theme="@style/LogQs"></activity>
+        <provider
+            android:name=".api.QStartProvider"
+            android:authorities="${applicationId}.abueno"
+            android:exported="false"
+            android:label="LentItemsProvider" />
+
+        <activity android:name=".api.LoginQStart" android:theme="@style/LogQs"></activity>
         <activity
             android:name=".intro.IntroQStart"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>

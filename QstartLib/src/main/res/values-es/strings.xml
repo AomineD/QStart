@@ -81,4 +81,22 @@
   <string name="login_b_1">Iniciar con QStart</string>
   <string name="login_b_2">Iniciar Sesión con QStart</string>
   <string name="login_b_3">Inicio rápido con Qstart</string>
+
+
+  <string name="skip_for_now">Onmitir por ahora</string>
+
+  <string name="rcver">Ya tienes cuenta? Recuperala</string>
+  <string name="password_r">Contraseña de recuperación</string>
+  <string name="recover_now">Recuperar</string>
+  <string name="save_pass_">Guardar</string>
+
+  <string name="rcver_put">Por tu seguridad, para recuperar tu contraseña en caso de emergencia</string>
+  <string name="secury">Añadiendo contraseña de recuperación…</string>
+  <string name="password_length">La contraseña debe ser mayor de 8 caracteres</string>
+  <string name="back_str">Volver</string>
+  <string name="welcomeagain">Bienvenido de nuevo</string>
+  <string name="recov_">Recuperar usuario</string>
+  <string name="spc_isr">Nombre de usuario no debe tener espacios</string>
+  <string name="recovering_">Recuperando usuario…</string>
+  <string name="password_or_user">Contraseña o Nombre de usuario incorrecto</string>
 </resources>

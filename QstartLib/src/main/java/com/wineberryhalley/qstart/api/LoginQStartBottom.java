@@ -1,31 +1,24 @@
-package com.wineberryhalley.qstart.utils;
+package com.wineberryhalley.qstart.api;
 
-import android.app.Activity;
-import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.wineberryhalley.qstart.R;
 import com.wineberryhalley.qstart.base.BottomBaseShet;
-import com.wineberryhalley.qstart.base.PicassoUtils;
 import com.wineberryhalley.qstart.base.User;
-import com.wineberryhalley.qstart.intro.IntroQStart;
-import com.wineberryhalley.qstart.ui.activity.LoginQStart;
 import com.wineberryhalley.qstart.ui.views.AboutQStartText;
 import com.wineberryhalley.qstart.ui.views.ImageLoadingView;
 import com.wineberryhalley.qstart.ui.views.RoundButton;
+import com.wineberryhalley.qstart.utils.LoginInterface;
+import com.wineberryhalley.qstart.utils.Timer;
 
 import static android.content.Context.MODE_PRIVATE;
-import static com.wineberryhalley.qstart.utils.Qa.am_mwql;
+import static com.wineberryhalley.qstart.api.Qa.am_mwql;
 
 public class LoginQStartBottom extends BottomBaseShet implements Qa.UserListener {
     protected LoginQStartBottom(){

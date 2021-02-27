@@ -82,4 +82,18 @@
     <string name="login_b_1">Login with QStart</string>
     <string name="login_b_2">Login in with QStart</string>
     <string name="login_b_3">Quick start with QStart</string>
+    <string name="rcver">Do you have account? Recover it</string>
+    <string name="password_r">Recovery password</string>
+    <string name="recover_now">Recover</string>
+    <string name="save_pass_">Save</string>
+    <string name="skip_for_now">Skip for now</string>
+    <string name="rcver_put">For you security, to recover your account in case of emergency</string>
+    <string name="secury">Adding recover password...</string>
+    <string name="password_length">Password must be more than 8 characters</string>
+    <string name="back_str">Back</string>
+    <string name="welcomeagain">Welcome again</string>
+    <string name="recov_">Recover user</string>
+    <string name="spc_isr">Username should haven\'t spaces</string>
+    <string name="recovering_">Recovering user...</string>
+    <string name="password_or_user">Password or username incorrect</string>
 </resources>

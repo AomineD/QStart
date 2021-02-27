@@ -10,25 +10,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.wineberryhalley.qstart.base.User;
-import com.wineberryhalley.qstart.intro.IntroQStart;
-import com.wineberryhalley.qstart.ui.activity.LoginQStart;
+import com.wineberryhalley.qstart.api.LoginQStart;
 import com.wineberryhalley.qstart.ui.views.ImageLoadingView;
 import com.wineberryhalley.qstart.ui.views.QStartLoginButton;
 import com.wineberryhalley.qstart.ui.views.RoundButton;
 import com.wineberryhalley.qstart.utils.LoginInterface;
-import com.wineberryhalley.qstart.utils.LoginQStartBottom;
-import com.wineberryhalley.qstart.utils.Qa;
-
-import java.util.HashMap;
-import java.util.Map;
+import com.wineberryhalley.qstart.api.LoginQStartBottom;
+import com.wineberryhalley.qstart.api.Qa;
 
 public class MainActivity extends AppCompatActivity implements LoginInterface {
 String key = "Lpq7DROXRGQyQB4OZuQRRqCZ4hM4YvSvNnq4i+E=";
@@ -45,7 +34,6 @@ ImageLoadingView imageLoadingView;
 
         b = findViewById(R.id.btn_a);
         imageLoadingView = findViewById(R.id.img_pic);
-
 
      LoginQStart.requirePhoto(R.drawable.smartphone);
 
@@ -66,6 +54,12 @@ ImageLoadingView imageLoadingView;
           LoginQStartBottom.loginRequiredPopUp(this, key, true);
       }
         //LoginQStartBottom.loginRequiredPopUp(this, key, true);
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LoginQStart.logOut(MainActivity.this);
+            }
+        });
     }
 
     private String TAG ="MAIN";
@@ -74,9 +68,9 @@ ImageLoadingView imageLoadingView;
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if(requestCode == Qa.a_p && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+        if(requestCode == LoginQStart.loging_permission && grantResults[0] == PackageManager.PERMISSION_GRANTED){
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.R){
-                Qa.requestNowManage(this);
+                LoginQStart.requestManageNow(this);
             }
             LoginQStartBottom.loginRequiredPermissionAccept(this, key);
         }else{

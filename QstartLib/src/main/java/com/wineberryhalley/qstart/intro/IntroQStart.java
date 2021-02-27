@@ -1,30 +1,20 @@
 package com.wineberryhalley.qstart.intro;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.rd.PageIndicatorView;
 import com.wineberryhalley.qstart.R;
 import com.wineberryhalley.qstart.base.BaseActivityNoStatus;
 import com.wineberryhalley.qstart.ui.views.RoundButton;
-import com.wineberryhalley.qstart.utils.LoginQStartBottom;
 
 import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.prefs.Preferences;
 
 public class IntroQStart extends BaseActivityNoStatus {
 

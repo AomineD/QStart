@@ -1,4 +1,4 @@
-package com.wineberryhalley.qstart.ui.activity;
+package com.wineberryhalley.qstart.api;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.animation.Animator;
 import android.app.Activity;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -34,7 +33,6 @@ import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
@@ -43,7 +41,6 @@ import com.daimajia.androidanimations.library.YoYo;
 import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.android.material.snackbar.Snackbar;
 import com.wineberryhalley.qstart.R;
-import com.wineberryhalley.qstart.api.Api;
 import com.wineberryhalley.qstart.base.BottomBaseShet;
 import com.wineberryhalley.qstart.base.PicassoUtils;
 import com.wineberryhalley.qstart.base.User;
@@ -52,9 +49,7 @@ import com.wineberryhalley.qstart.ui.views.RoundButton;
 import com.wineberryhalley.qstart.ui.views.WebFloating;
 import com.wineberryhalley.qstart.utils.Country;
 import com.wineberryhalley.qstart.utils.LoginInterface;
-import com.wineberryhalley.qstart.utils.Qa;
 import com.wineberryhalley.qstart.utils.SelectedCountryListener;
-import com.wineberryhalley.qstart.utils.TextU;
 import com.wineberryhalley.qstart.utils.Timer;
 
 import java.io.ByteArrayOutputStream;
@@ -62,8 +57,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Locale;
 
-import static com.wineberryhalley.qstart.utils.Qa.am_mwql;
-import static com.wineberryhalley.qstart.utils.Qa.ke_res;
+import static com.wineberryhalley.qstart.api.Qa.am_mwql;
+import static com.wineberryhalley.qstart.api.Qa.ke_res;
+import static com.wineberryhalley.qstart.api.Qa.saveUser;
 import static com.wineberryhalley.qstart.utils.TextU.makeLinkSpan;
 import static com.wineberryhalley.qstart.utils.TextU.makeLinksFocusable;
 
@@ -76,7 +72,21 @@ public class LoginQStart extends AppCompatActivity implements Qa.UserListener, S
 
     private static int icon_res = 0;
 
+public static final int loging_permission = Qa.a_p;
 
+public static void requestManageNow(Activity a){
+    Qa.requestNowManage(a);
+}
+
+public static void logOut(){
+    Qa.deleteData();
+}
+
+    public static void logOut(Activity activity){
+        Qa.deleteData();
+        activity.startActivity(new Intent(activity, activity.getClass()));
+        activity.finish();
+    }
 
     public static void requireCountry(int appIconRes){
         requireCountry = true;
@@ -233,8 +243,8 @@ moveToNext();
             @Override
             public void onClick(View v) {
                 showLoading(getString(R.string.loading_countries));
-                Api api = Api.get(LoginQStart.this, abb);
-                api.getCountries(new Api.CountryListener() {
+                Ecapdamond ecapdamond = Ecapdamond.ecapdamond;
+                ecapdamond.getCountries(new Ecapdamond.CountryListener() {
                     @Override
                     public void onLoad(ArrayList<Country> countries) {
                         hideLoading();
@@ -256,6 +266,14 @@ showError(getString(R.string.error_general), false);
             errorLogging("Canceled");
         }
     });
+
+    findViewById(R.id.reco_bt).setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            animRecovery();
+        }
+    });
+
     if(writePermission)
         moveToNext();
     }
@@ -290,12 +308,187 @@ showError(getString(R.string.error_general), false);
                             @Override
                             public void run() {
                                 hideLoading();
-                                successLogin();
-                                onBackPressed();
+                        goRecoveryPut();
                             }
                         });
                     }
                 }, 2300);
+            }
+        });
+    }
+
+    private void showSuccessTiming(String customText, boolean a){
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                loading_rel.setVisibility(View.VISIBLE);
+                loading.setAnimation(getString(R.string.success_anim));
+                loading.setRepeatCount(1);
+                loading.playAnimation();
+                text_loading.setText(customText);
+                Timer.init(new Timer.TimerListener() {
+                    @Override
+                    public void onSuccess() {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                hideLoading();
+                                if(a) {
+                                    goRecoveryPut();
+                                }else{
+                                    successLogin();
+                                    onBackPressed();
+                                }
+                            }
+                        });
+                    }
+                }, 2300);
+            }
+        });
+    }
+
+    private void goRecoveryPut() {
+View recoverlay = findViewById(R.id.recover_pass_put);
+        YoYo.with(Techniques.SlideInUp).onStart(new YoYo.AnimatorCallback() {
+            @Override
+            public void call(Animator animator) {
+
+                YoYo.with(Techniques.FadeOut).duration(500).onEnd(new YoYo.AnimatorCallback() {
+                    @Override
+                    public void call(Animator animator) {
+                        findViewById(R.id.signup_rel).setVisibility(View.GONE);
+                    }
+                }).playOn(findViewById(R.id.signup_rel));
+
+                recoverlay.setVisibility(View.VISIBLE);
+            }
+        }).duration(800).playOn(recoverlay);
+
+        AutoCompleteTextView tpassword = findViewById(R.id.passrecoverput);
+
+        RoundButton r = findViewById(R.id.save_pass_btn);
+        RoundButton sk = findViewById(R.id.skip_btn);
+
+        r.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String rec = tpassword.getText().toString();
+
+                if(rec.length() < 8){
+                    showRed(getString(R.string.password_length), "OK", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                        }
+                    });
+                }else {
+
+                    Ecapdamond p = Ecapdamond.ecapdamond;
+showLoading(getString(R.string.secury));
+                    p.putRecoverPass(rec, new Ecapdamond.StatusListener() {
+                        @Override
+                        public void onLoad(User user) {
+                            showSuccessTiming(getString(R.string.succ), false);
+                        }
+
+                        @Override
+                        public void onError(String erno) {
+showError(getString(R.string.error_general), false);
+                        }
+                    });
+                }
+            }
+        });
+
+        sk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                successLogin();
+                onBackPressed();
+            }
+        });
+
+    }
+
+    private void animRecovery(){
+        YoYo.with(Techniques.FadeOut).onEnd(new YoYo.AnimatorCallback() {
+            @Override
+            public void call(Animator animator) {
+                relativeLayouts[0].setVisibility(View.GONE);
+                goRecovery();
+            }
+        }).duration(800).playOn(relativeLayouts[0]);
+    }
+
+    private void goRecovery(){
+
+        View recoverlay = findViewById(R.id.recover_lay);
+        YoYo.with(Techniques.SlideInUp).onStart(new YoYo.AnimatorCallback() {
+            @Override
+            public void call(Animator animator) {
+                recoverlay.setVisibility(View.VISIBLE);
+            }
+        }).duration(800).playOn(recoverlay);
+
+        AutoCompleteTextView usr = findViewById(R.id.username_rec);
+        AutoCompleteTextView pass = findViewById(R.id.passrecover);
+
+        Ecapdamond a = Ecapdamond.ecapdamond;
+
+        findViewById(R.id.recover_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               if(pass.getText().toString().length() < 8){
+                   showRed(getString(R.string.password_length), "OK", new View.OnClickListener() {
+                       @Override
+                       public void onClick(View v) {
+
+                       }
+                   });
+               }else if(usr.getText().toString().contains(" ")){
+                   showRed(getString(R.string.spc_isr), "Ok", new View.OnClickListener() {
+                       @Override
+                       public void onClick(View v) {
+
+                       }
+                   });
+               }else if (usr.getText().toString().isEmpty()) {
+                   showRed(getString(R.string.emptyuser), "Ok", new View.OnClickListener() {
+                       @Override
+                       public void onClick(View v) {
+
+                       }
+                   });
+               }
+               else{
+                   showLoading(getString(R.string.recovering_));
+                   String usa = usr.getText().toString();
+a.getRecover(usa, pass.getText().toString(), new Ecapdamond.StatusListener() {
+    @Override
+    public void onLoad(User user) {
+        user.saveUser();
+        saveUser(user);
+   showSuccessTiming(getString(R.string.welcomeagain)+" "+user.username, false);
+    }
+
+    @Override
+    public void onError(String erno) {
+       Log.e(TAG, "onError: "+erno );
+        if(erno.equals("password-error")){
+            showError(getString(R.string.password_or_user), false);
+        }else {
+            showError(getString(R.string.error_general), false);
+        }
+    }
+});
+               }
+            }
+        });
+
+        findViewById(R.id.back_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                moveToInitial(recoverlay);
             }
         });
     }
@@ -379,6 +572,20 @@ showError(getString(R.string.error_general), false);
         }).playOn(relativeLayouts[ind]);
 
         ind++;
+
+    }
+
+    private void moveToInitial(View Actual){
+        YoYo.with(Techniques.FadeOutLeft).duration(500).onEnd(new YoYo.AnimatorCallback() {
+            @Override
+            public void call(Animator animator) {
+                Actual.setVisibility(View.GONE);
+                ind = 0;
+                    now();
+                // relativeLayouts[ind-1].setVisibility(View.GONE);
+            }
+        }).playOn(Actual);
+
 
     }
 
@@ -526,7 +733,7 @@ else
     public void onLogin(User user) {
         Log.e(TAG, "onLogin: "+user.user_id );
 user.saveUser();
-showSuccessTiming(getString(R.string.logged));
+showSuccessTiming(getString(R.string.logged), false);
         SharedPreferences sharedPreferences = getSharedPreferences("qkt", MODE_PRIVATE);
         sharedPreferences.edit().putBoolean(ke_res, true).apply();
     }
@@ -568,6 +775,13 @@ showSuccessTiming(getString(R.string.logged));
             public void onClick(View v) {
                 if (usern.getText().toString().isEmpty()) {
                     showRed(getString(R.string.emptyuser), "Ok", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                        }
+                    });
+                }else if(usern.getText().toString().contains(" ")){
+                    showRed(getString(R.string.spc_isr), "Ok", new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
 
@@ -734,9 +948,9 @@ profile_img = findViewById(R.id.img_preview);
     }
 
     private void checkUsernm(){
-        Api api = Api.get(this, abb);
+        Ecapdamond ecapdamond = Ecapdamond.ecapdamond;
         showLoading(getString(R.string.check_usern_loading));
-        api.checkUserName(usern.getText().toString(), new Api.CheckListener() {
+        ecapdamond.checkUserName(usern.getText().toString(), new Ecapdamond.CheckListener() {
             @Override
             public void Exist() {
                 showError(getString(R.string.usernam_exist), false);
@@ -745,7 +959,7 @@ profile_img = findViewById(R.id.img_preview);
             @Override
             public void Available() {
                 hideLoading();
-signUp(api);
+signUp(ecapdamond);
             }
 
             @Override
@@ -756,12 +970,12 @@ showError(getString(R.string.error_general), true);
         });
     }
 
-    private void signUp(Api api) {
+    private void signUp(Ecapdamond ecapdamond) {
 
 
         if(profileUri != null && !profileUri.equals("")){
             showLoading(getString(R.string.up_ph));
-api.sendImage(profileUri, usern.getText().toString(), new Api.UploadListener() {
+ecapdamond.sendImage(profileUri, usern.getText().toString(), new Ecapdamond.UploadListener() {
     @Override
     public void onUploadSuccess(String url) {
   //      Log.e(TAG, "onUploadSuccess: "+url );

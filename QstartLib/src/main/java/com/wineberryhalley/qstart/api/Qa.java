@@ -1,4 +1,4 @@
-package com.wineberryhalley.qstart.utils;
+package com.wineberryhalley.qstart.api;
 
 import android.Manifest;
 import android.app.Activity;
@@ -12,14 +12,13 @@ import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
+import androidx.annotation.RestrictTo;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 
 import com.wineberryhalley.qstart.R;
-import com.wineberryhalley.qstart.api.Api;
 import com.wineberryhalley.qstart.base.TinyDB;
 import com.wineberryhalley.qstart.base.User;
-import com.wineberryhalley.qstart.ui.activity.LoginQStart;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -27,19 +26,22 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class Qa {
-    public static final int a_p = 465;
-    public static final String ke_res = "MLQMDASDASD";
-    public static final String am_mwql = "mawlfrkkmdsmkdsd";
+import static androidx.annotation.RestrictTo.Scope.LIBRARY;
 
-    public static void checkD(Activity activity) {
+@RestrictTo(LIBRARY)
+public class Qa {
+     static final int a_p = 465;
+     static final String ke_res = "MLQMDASDASD";
+     static final String am_mwql = "mawlfrkkmdsmkdsd";
+
+     static void checkD(Activity activity) {
         if (tinyDB == null) {
             tinyDB = new TinyDB(activity);
             User.setTinyDB(tinyDB);
         }
     }
 
-    public static void hideKeyboard(Activity activity) {
+     static void hideKeyboard(Activity activity) {
         InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
         //Find the currently focused view, so we can grab the correct window token from it.
         View view = activity.getCurrentFocus();
@@ -51,13 +53,13 @@ public class Qa {
     }
 
     private static TinyDB tinyDB;
-    public static boolean isLogged(Activity activity) {
+     static boolean isLogged(Activity activity) {
         return canReadAndWrite(activity) && tinyDB.getUserLogged() != null && !tinyDB.getUserLogged().user_id.equals("") && tinyDB.getUserLogged().status;
     }
 
-    public static void checkUserAvailibity(Activity activity, String abu,CheckListener listener){
+     static void checkUserAvailibity(Activity activity, String abu,CheckListener listener){
         checkD(activity);
-        Api api = Api.get(activity, abu);
+        Ecapdamond ecapdamond = Ecapdamond.ecapdamond;
         String usid = "";
         if(isLogged(activity)){
         //    Log.e("MAIN", "checkUserAvailibity: akja" );
@@ -67,7 +69,7 @@ public class Qa {
         }
 
         //    Log.e("MAIN", "checkUserAvailibity: "+usid );
-        api.login(usid, new Api.StatusListener() {
+        ecapdamond.login(usid, new Ecapdamond.StatusListener() {
             @Override
             public void onLoad(User user) {
                 listener.onSuccess(user);
@@ -111,9 +113,9 @@ public class Qa {
         });
     }
 
-    public static void loginUser(Activity activity, UserListener listener){
+     static void loginUser(Activity activity, UserListener listener){
         checkD(activity);
-        Api api = Api.get(activity, activity.getPackageName());
+        Ecapdamond ecapdamond = Ecapdamond.ecapdamond;
         String usid = "";
         if(isLogged(activity)){
             //    Log.e("MAIN", "checkUserAvailibity: akja" );
@@ -123,7 +125,7 @@ public class Qa {
         }
 
         //    Log.e("MAIN", "checkUserAvailibity: "+usid );
-        api.login(usid, new Api.StatusListener() {
+        ecapdamond.login(usid, new Ecapdamond.StatusListener() {
             @Override
             public void onLoad(User user) {
                 listener.onLogin(user);
@@ -155,7 +157,7 @@ public class Qa {
     }
 
 
-    public static void checkFile(Activity activity,String abb,UserListener userListener) {
+     static void checkFile(Activity activity,String abb,UserListener userListener) {
 
         Thread t = new Thread(new Runnable() {
             @Override
@@ -173,7 +175,7 @@ public class Qa {
 
                 if(!lg.exists()){
 
-                  //  Api api = Api.get(activity);
+                  //  Ecapdamond ecapdamond = Ecapdamond.get(activity);
                     if(activity instanceof LoginQStart){
                         LoginQStart l = (LoginQStart) activity;
                         l.showLoading(activity.getString(R.string.signingup));
@@ -188,7 +190,7 @@ userListener.needSignUp();
                             String contents = read_(lg);
                             User user = new User();
                             user.user_id = contents;
-                            Log.e("MAIN", "run: "+contents );
+                          //  Log.e("MAIN", "run: "+contents );
                             checkUserAvailibity(activity, abb, new CheckListener() {
                                 @Override
                                 public void onSuccess(User user) {
@@ -215,8 +217,8 @@ userListener.needSignUp();
 
     }
 
-    public static void signUpNow(Activity activity, String abu, User user, UserListener userListener){
-        Api api = Api.get(activity, abu);
+     static void signUpNow(Activity activity, String abu, User user, UserListener userListener){
+        Ecapdamond ecapdamond = Ecapdamond.ecapdamond;
         File fail = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS);
         //      String path = fail.getAbsolutePath().replace(activity.getPackageName()+"/files", "");
 
@@ -227,7 +229,7 @@ userListener.needSignUp();
         }
 
      //   File lg = new File(folder+File.separator+"lgn");
-        api.signup(user,new Api.StatusListener() {
+        ecapdamond.signup(user,new Ecapdamond.StatusListener() {
             @Override
             public void onLoad(User user) {
 
@@ -265,7 +267,7 @@ userListener.needSignUp();
         });
     }
 
-    public static String read_(File file) throws IOException {
+     static String read_(File file) throws IOException {
         String highScore = "";
         BufferedReader br = new BufferedReader(new FileReader(file));
 
@@ -278,7 +280,7 @@ userListener.needSignUp();
 
     //LEER ARCHIVO
 
-    public static String user_id_by_file(){
+     static String user_id_by_file(){
         File fail = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS);
         //      String path = fail.getAbsolutePath().replace(activity.getPackageName()+"/files", "");
 
@@ -306,20 +308,53 @@ userListener.needSignUp();
     }
 
     //EL ARCHIVO EXISTE?
-    public static boolean existFile(){
+     static boolean existFile(){
 
         return fileQuik().exists();
     }
 
+     static void saveUser(User user){
+         File fail = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS);
+         //      String path = fail.getAbsolutePath().replace(activity.getPackageName()+"/files", "");
 
-    public static User userByGSON(){
+         File folder = new File(fail.getAbsolutePath()+File.separator+".quickstrt");
+         //   Log.e("MAIN", "run: "+folder.getAbsolutePath());
+         if(!folder.exists()){
+             folder.mkdirs();
+         }
+         File gpxfile = new File(folder, "qslgn");
+
+         //       Log.e("MAIN", "onLoad: "+user.user_id );
+         FileWriter writer = null;
+         try {
+             if(!gpxfile.exists()){
+                 gpxfile.createNewFile();
+             }
+             writer = new FileWriter(gpxfile);
+
+             writer.append(user.user_id);
+             writer.flush();
+             writer.close();
+             user.saveUser();
+
+             //    Toast.makeText(activity, "Saved", Toast.LENGTH_SHORT).show();
+             //      Log.e("MAIN", "onLoad: saved in "+gpxfile.getAbsolutePath() );
+             //    activity.hideLoading();
+           //  userListener.onSignUp(user);
+         } catch (IOException e) {
+             Log.e("MAIN", "IO Exc: "+e.getMessage() );
+             e.printStackTrace();
+         }
+    }
+
+     static User userByGSON(){
         if(tinyDB != null)
             return tinyDB.getUserLogged();
         else
             return null;
     }
 
-    public static File fileQuik(){
+     static File fileQuik(){
         File fail = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS);
         //      String path = fail.getAbsolutePath().replace(activity.getPackageName()+"/files", "");
 
@@ -333,10 +368,13 @@ userListener.needSignUp();
         return lg;
     }
 
-    public static void deleteData(){
+     static void deleteData(){
         if(fileQuik().exists()){
             fileQuik().delete();
         }
+         if(tinyDB != null){
+             tinyDB.remove("quiksur");
+         }
     }
 
     /** PERMISSION MANAGER **/
@@ -349,11 +387,11 @@ userListener.needSignUp();
         void onDenied();
     }
 
-    public static String[] permissionBelowR = new String[]{
+     static String[] permissionBelowR = new String[]{
             Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE
     };
 
-    public static String[] permissionTop = new String[]{
+     static String[] permissionTop = new String[]{
             Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE
     };
 
@@ -377,7 +415,7 @@ userListener.needSignUp();
         }
     }
 
-    public static void requestPermiss(Activity activity){
+     static void requestPermiss(Activity activity){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             ActivityCompat.requestPermissions(activity, permissionTop, 465);
         }else{
@@ -385,7 +423,7 @@ userListener.needSignUp();
         }
     }
 
-    public static boolean canReadAndWrite(Activity activity){
+     static boolean canReadAndWrite(Activity activity){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             return ActivityCompat.checkSelfPermission(
                     activity, Manifest.permission.WRITE_EXTERNAL_STORAGE) ==
@@ -401,14 +439,14 @@ userListener.needSignUp();
         }
     }
 
-    public static final String keyword_file_access = "open failed: EACCES (Permission denied)";
+     static final String keyword_file_access = "open failed: EACCES (Permission denied)";
 
-    public static boolean permissionDeniedManage(String erno){
+     static boolean permissionDeniedManage(String erno){
         return erno.contains(keyword_file_access) && android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R;
     }
 
 
-    public static void requestNowManage(Activity activity){
+     static void requestNowManage(Activity activity){
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R) {
             Intent intent = new Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION);
             String data = "package:"+activity.getPackageName();

@@ -1,10 +1,10 @@
 package com.wineberryhalley.qstart.api;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
-import android.widget.Toast;
+
+import androidx.annotation.RestrictTo;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
@@ -14,54 +14,74 @@ import com.android.volley.Response;
 import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.wineberryhalley.qstart.BuildConfig;
 import com.wineberryhalley.qstart.R;
 import com.wineberryhalley.qstart.base.User;
-import com.wineberryhalley.qstart.ui.activity.LoginQStart;
 import com.wineberryhalley.qstart.utils.Country;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.reflect.Field;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Hashtable;
-import java.util.Iterator;
 import java.util.Map;
 
-import static com.wineberryhalley.qstart.utils.Qa.am_mwql;
+import static androidx.annotation.RestrictTo.Scope.LIBRARY;
+import static com.wineberryhalley.qstart.api.Qa.am_mwql;
+import static com.wineberryhalley.qstart.api.Qa.user_id_by_file;
 
-public class Api {
+@RestrictTo(LIBRARY)
+public class Ecapdamond {
     RequestQueue queue;
-    private Activity activity;
-    private String ak;
-    protected Api(Activity activity, String ak){
+    private Context activity;
+    protected Ecapdamond(){
+        activity = QStartProvider.context;
 queue = Volley.newRequestQueue(activity);
-this.ak = ak;
-this.activity = activity;
         SharedPreferences a = activity.getSharedPreferences("qkt", Context.MODE_PRIVATE);
-
 setk(a.getString(am_mwql, ""));
+        try {
+            Class<?> klass = Class.forName(BuildConfig.LIBRARY_PACKAGE_NAME+".BuildConfig");
+            Field f = klass.getField("a_cmmon");
+            Field field = klass.getDeclaredField(String.valueOf(f.get(null)));
+            URL = String.valueOf(field.get(null));
+        } catch (ClassNotFoundException | NoSuchFieldException | IllegalAccessException e) {
+            Log.e("MAIN", "Ecapdamond: "+e );
+            e.printStackTrace();
+        }
     }
 
-    String URL = "https://wineberryhalley.cloud/api/sqst/api/";
+    String URL = "";
     String API_SECRECT_KEY;
     private void setk(String a){
         API_SECRECT_KEY = a;
     }
-    String login = URL+"login";
-    String signup = URL+"signup";
-    String up = URL+"upImg";
-
-    public static Api get(Activity activity, String ej){
-      return new Api(activity, ej);
+    String login() {
+        return URL+"login";
     }
+    String signup(){ return URL+"signup";}
+    String recover_add(){
+      return   URL+"add_security";
+    }
+    String rc(){
+        return URL+"recover_id";
+    }
+    String up(){
+        return URL+"upImg";
+    }
+    String a(){
+        return URL+"active";
+    }
+    static Ecapdamond ecapdamond = new Ecapdamond();
+
+
 
 
 
@@ -84,7 +104,7 @@ setk(a.getString(am_mwql, ""));
     //SIGNUP
     public void signup(User user, final StatusListener listenerGenre){
 
-        String url = signup;
+        String url = signup();
      //   Log.e("MAIN", "sign: "+url );
         StringRequest jsonArrayRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -160,7 +180,7 @@ if(!gende.equals("NONE")){
     //LOGIN AND AVAILIBITY
     public void login(String usr, final StatusListener listenerGenre){
 
-        String url = login;
+        String url = login();
        //   Log.e("MAIN", "login: "+usr );
         StringRequest jsonArrayRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -319,6 +339,160 @@ queue.getCache().clear();
 
     }
 
+    public void putRecoverPass(String recover, StatusListener statusListener){
+        String url = recover_add();
+        StringRequest jsonArrayRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String responsea) {
+
+                //    Log.e("MAIN", "onResponse: "+responsea );
+                try {
+                    JSONObject response = new JSONObject(responsea);
+                    //Log.e("MAIN", "onResponse: "+response.has("status") );
+                    if(response.getString("status").equals("success")) {
+                        statusListener.onLoad(null);
+                    }else if(response.getString("status").equals("error")){
+                        statusListener.onError(response.getString("data"));
+                    }
+
+                } catch (JSONException e) {
+                    //Log.e("MAIN", "onResponse BY GENRE: "+e.getMessage());
+                    //  e.printStackTrace();
+                    statusListener.onError(e.getMessage());
+                }
+
+
+
+
+
+
+                queue.getCache().clear();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                statusListener.onError(error.getMessage());
+                queue.getCache().clear();
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> map = getPostP();
+                map.put("dam", user_id_by_file());
+                map.put("recover", recover);
+                return map;
+            }
+        };
+
+        queue.add(jsonArrayRequest);
+    }
+
+    public void active(StatusListener statusListener){
+        String url = a();
+        StringRequest jsonArrayRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String responsea) {
+
+                //    Log.e("MAIN", "onResponse: "+responsea );
+                try {
+                    JSONObject response = new JSONObject(responsea);
+                    //Log.e("MAIN", "onResponse: "+response.has("status") );
+                    if(response.getString("status").equals("success")) {
+                        statusListener.onLoad(null);
+                    }else if(response.getString("status").equals("error")){
+                        statusListener.onError(response.getString("data"));
+                    }
+
+                } catch (JSONException e) {
+                    //Log.e("MAIN", "onResponse BY GENRE: "+e.getMessage());
+                    //  e.printStackTrace();
+                    statusListener.onError(e.getMessage());
+                }
+
+
+
+
+
+
+                queue.getCache().clear();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                statusListener.onError(error.getMessage());
+                queue.getCache().clear();
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> map = getPostP();
+                map.put("usdi", user_id_by_file());
+                return map;
+            }
+        };
+      //  Log.e("MAIN", "active: "+user_id_by_file() );
+
+        queue.add(jsonArrayRequest);
+    }
+
+    public void getRecover(String usr, String recover, StatusListener statusListener){
+        String url = rc();
+        StringRequest jsonArrayRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String responsea) {
+
+                //    Log.e("MAIN", "onResponse: "+responsea );
+                try {
+                    JSONObject responseq = new JSONObject(responsea);
+                    //Log.e("MAIN", "onResponse: "+response.has("status") );
+                    if(responseq.getString("status").equals("success")) {
+                        User models = new User();
+
+                        models.status = responseq.getString("status").equals("success");
+JSONObject response = responseq.getJSONObject("data");
+                        models.user_id = response.getString("user_id");
+                        models.imageUri = response.getString("img");
+                        models.country = response.getString("country");
+                        models.gender = response.getString("gender");
+
+                        models.username = response.getString("username");
+                        statusListener.onLoad(models);
+                    }else if(responseq.getString("status").equals("error")){
+                        statusListener.onError(responseq.getString("data"));
+                    }
+
+                } catch (JSONException e) {
+                    //Log.e("MAIN", "onResponse BY GENRE: "+e.getMessage());
+                    //  e.printStackTrace();
+                    statusListener.onError(e.getMessage());
+                }
+
+
+
+
+
+
+                queue.getCache().clear();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                statusListener.onError(error.getMessage());
+                queue.getCache().clear();
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> map = getPostP();
+                map.put("usernm", usr);
+                map.put("recover", recover);
+                return map;
+            }
+        };
+
+        queue.add(jsonArrayRequest);
+    }
+
     private String[] codeCountry(){
         return new String[]{
 
@@ -355,7 +529,7 @@ queue.getCache().clear();
     }
 
     public void sendImage( final String image, final String usern, final UploadListener listener) {
-     StringRequest stringRequest = new StringRequest(Request.Method.POST, up, new Response.Listener<String>() {
+     StringRequest stringRequest = new StringRequest(Request.Method.POST, up(), new Response.Listener<String>() {
          @Override
          public void onResponse(String response) {
            Log.e("MAIN", response);

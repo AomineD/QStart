@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".ui.activity.LoginQStart">
+    tools:context=".api.LoginQStart">
     <ImageView
         android:layout_width="32dp"
         android:layout_height="32dp"
@@ -86,6 +86,39 @@ app:srcCompat="@drawable/back_ic"
         app:backgroundColor="@color/dark"
         app:textColor="@color/white"
         app:text="@string/login__"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:padding="10dp"
+        android:layout_marginTop="15dp"
+        android:text="@string/rcver"
+        android:textAlignment="center"
+        android:textColor="@color/black2"
+        android:layout_below="@id/login_bt"
+        android:id="@+id/lreco"
+        android:textSize="16sp"
+        android:textStyle="normal" />
+
+    <com.wineberryhalley.qstart.ui.views.RoundButton
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/reco_bt"
+        android:layout_below="@id/lreco"
+        android:layout_marginTop="10dp"
+        app:buttonElevation="10dp"
+        android:layout_centerHorizontal="true"
+        app:textPadding="8dp"
+        app:textBold="true"
+        app:buttonRadius="8dp"
+        app:textSize="18"
+        app:backgroundColor="@color/dark"
+        app:textColor="@color/white"
+        app:text="@string/recov_"
         />
 </RelativeLayout>
 
@@ -218,6 +251,17 @@ app:srcCompat="@drawable/back_ic"
 <include
     layout="@layout/sign_up_qs"
     />
+
+    <include
+        android:id="@+id/recover_lay"
+        layout="@layout/recover_layout"
+        android:visibility="gone"
+        />
+    <include
+        android:id="@+id/recover_pass_put"
+        layout="@layout/recover_pass_put"
+        android:visibility="gone"
+        />
 
     <RelativeLayout
         android:layout_width="match_parent"
