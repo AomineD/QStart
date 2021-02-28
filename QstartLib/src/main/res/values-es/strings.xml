@@ -37,7 +37,7 @@
   <string name="signingup2">Registrandote :D</string>
   <string name="logged">Iniciaste sesión éxitosamente</string>
   <string name="error_loading">errorwarning.json</string>
-  <string name="signupaga">firmar de nuevo</string>
+  <string name="signupaga">Registrate de nuevo</string>
   <string name="user_name">Nombre de usuario</string>
   <string name="signup">Oh, ¿eres nuevo aquí? \nRegístrate</string>
   <string name="signupnow">Registrarse</string>
