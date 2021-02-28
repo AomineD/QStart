@@ -90,7 +90,7 @@
   <string name="recover_now">Recuperar</string>
   <string name="save_pass_">Guardar</string>
 
-  <string name="rcver_put">Por tu seguridad, para recuperar tu contraseña en caso de emergencia</string>
+  <string name="rcver_put">Por tu seguridad, para recuperar tu cuenta en caso de emergencia</string>
   <string name="secury">Añadiendo contraseña de recuperación…</string>
   <string name="password_length">La contraseña debe ser mayor de 8 caracteres</string>
   <string name="back_str">Volver</string>
