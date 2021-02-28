@@ -77,7 +77,7 @@ public class Qa {
 
             @Override
             public void onError(String erno) {
-                Log.e("MAIN", "onError: "+erno );
+              //  Log.e("MAIN", "onError: "+erno );
                 if(erno.contains("User id not valid")){
                     deleteData();
                     checkFile(activity, abu, new UserListener() {
@@ -133,7 +133,7 @@ public class Qa {
 
             @Override
             public void onError(String erno) {
-                Log.e("MAIN", "onError: "+erno );
+            //    Log.e("MAIN", "onError: "+erno );
                 if(erno.contains("User id not valid")){
                listener.needSignUp();
                 }else{
@@ -253,7 +253,7 @@ userListener.needSignUp();
                     //    activity.hideLoading();
                     userListener.onSignUp(user);
                 } catch (IOException e) {
-                    Log.e("MAIN", "IO Exc: "+e.getMessage() );
+                  //  Log.e("MAIN", "IO Exc: "+e.getMessage() );
                     e.printStackTrace();
                 }
             }
@@ -262,7 +262,7 @@ userListener.needSignUp();
             public void onError(String erno) {
                 //     activity.hideLoading();
                 userListener.onError(erno);
-                Log.e("MAIN", "onError SIG: "+erno );
+              //  Log.e("MAIN", "onError SIG: "+erno );
             }
         });
     }
@@ -300,7 +300,7 @@ userListener.needSignUp();
                 return contents;
                 //    Log.e("MAIN", "run: "+contents+" "+(ActivityCompat.checkSelfPermission(activity, Manifest.permission.MANAGE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) );
             } catch (IOException e) {
-                Log.e("MAIN", "user_id_by_file: "+e.getMessage() );
+                //Log.e("MAIN", "user_id_by_file: "+e.getMessage() );
                 return "0";
             }
         }else
@@ -342,7 +342,7 @@ userListener.needSignUp();
              //    activity.hideLoading();
            //  userListener.onSignUp(user);
          } catch (IOException e) {
-             Log.e("MAIN", "IO Exc: "+e.getMessage() );
+         //    Log.e("MAIN", "IO Exc: "+e.getMessage() );
              e.printStackTrace();
          }
     }
