@@ -308,7 +308,32 @@ showError(getString(R.string.error_general), false);
                             @Override
                             public void run() {
                                 hideLoading();
-                        goRecoveryPut();
+                        goRecoveryPut(false);
+                            }
+                        });
+                    }
+                }, 2300);
+            }
+        });
+    }
+
+    private void showSuccessTimingSignUp(String customText){
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                loading_rel.setVisibility(View.VISIBLE);
+                loading.setAnimation(getString(R.string.success_anim));
+                loading.setRepeatCount(1);
+                loading.playAnimation();
+                text_loading.setText(customText);
+                Timer.init(new Timer.TimerListener() {
+                    @Override
+                    public void onSuccess() {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                hideLoading();
+                                goRecoveryPut(true);
                             }
                         });
                     }
@@ -334,9 +359,9 @@ showError(getString(R.string.error_general), false);
                             public void run() {
                                 hideLoading();
                                 if(a) {
-                                    goRecoveryPut();
+                                    goRecoveryPut(false);
                                 }else{
-                                    successLogin();
+                                    successLogin(false);
                                     onBackPressed();
                                 }
                             }
@@ -347,7 +372,7 @@ showError(getString(R.string.error_general), false);
         });
     }
 
-    private void goRecoveryPut() {
+    private void goRecoveryPut(boolean signup) {
 View recoverlay = findViewById(R.id.recover_pass_put);
         YoYo.with(Techniques.SlideInUp).onStart(new YoYo.AnimatorCallback() {
             @Override
@@ -403,7 +428,8 @@ showError(getString(R.string.error_general), false);
         sk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                successLogin();
+
+                successLogin(signup);
                 onBackPressed();
             }
         });
@@ -493,9 +519,12 @@ a.getRecover(usa, pass.getText().toString(), new Ecapdamond.StatusListener() {
         });
     }
 
-    private void successLogin(){
+    private void successLogin(boolean signup){
         if(logingListener != null){
+            if(!signup)
             logingListener.onLogged(Qa.userByGSON());
+            else
+                logingListener.OnSignUpUser(Qa.userByGSON());
         }
     }
     private void errorLogging(String erno){
@@ -697,7 +726,7 @@ else
     public void onSignUp(User user) {
        // Log.e(TAG, "onSignUp: "+user.user_id );
         user.saveUser();
-        showSuccessTiming(getString(R.string.succ));
+        showSuccessTimingSignUp(getString(R.string.succ));
         SharedPreferences sharedPreferences = getSharedPreferences("qkt", MODE_PRIVATE);
         sharedPreferences.edit().putBoolean(ke_res, true).apply();
 
@@ -731,7 +760,7 @@ else
     private boolean goManage = false;
     @Override
     public void onLogin(User user) {
-        Log.e(TAG, "onLogin: "+user.user_id );
+      //  Log.e(TAG, "onLogin: "+user.user_id );
 user.saveUser();
 showSuccessTiming(getString(R.string.logged), false);
         SharedPreferences sharedPreferences = getSharedPreferences("qkt", MODE_PRIVATE);
