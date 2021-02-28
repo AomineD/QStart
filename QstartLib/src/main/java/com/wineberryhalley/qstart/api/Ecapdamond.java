@@ -532,7 +532,7 @@ JSONObject response = responseq.getJSONObject("data");
      StringRequest stringRequest = new StringRequest(Request.Method.POST, up(), new Response.Listener<String>() {
          @Override
          public void onResponse(String response) {
-           Log.e("MAIN", response);
+        //   Log.e("MAIN", response);
 
              try {
                  JSONObject jsonObject = new JSONObject(response);

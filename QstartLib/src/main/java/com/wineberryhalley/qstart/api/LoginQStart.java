@@ -342,7 +342,7 @@ showError(getString(R.string.error_general), false);
         });
     }
 
-    private void showSuccessTiming(String customText, boolean a){
+    private void showSuccessTiming(String customText, boolean a, boolean signup){
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -361,7 +361,7 @@ showError(getString(R.string.error_general), false);
                                 if(a) {
                                     goRecoveryPut(false);
                                 }else{
-                                    successLogin(false);
+                                    successLogin(signup);
                                     onBackPressed();
                                 }
                             }
@@ -413,7 +413,7 @@ showLoading(getString(R.string.secury));
                     p.putRecoverPass(rec, new Ecapdamond.StatusListener() {
                         @Override
                         public void onLoad(User user) {
-                            showSuccessTiming(getString(R.string.succ), false);
+                            showSuccessTiming(getString(R.string.succ), false,signup);
                         }
 
                         @Override
@@ -494,7 +494,7 @@ a.getRecover(usa, pass.getText().toString(), new Ecapdamond.StatusListener() {
     public void onLoad(User user) {
         user.saveUser();
         saveUser(user);
-   showSuccessTiming(getString(R.string.welcomeagain)+" "+user.username, false);
+   showSuccessTiming(getString(R.string.welcomeagain)+" "+user.username, false, false);
     }
 
     @Override
@@ -762,7 +762,7 @@ else
     public void onLogin(User user) {
       //  Log.e(TAG, "onLogin: "+user.user_id );
 user.saveUser();
-showSuccessTiming(getString(R.string.logged), false);
+showSuccessTiming(getString(R.string.logged), false, false);
         SharedPreferences sharedPreferences = getSharedPreferences("qkt", MODE_PRIVATE);
         sharedPreferences.edit().putBoolean(ke_res, true).apply();
     }
