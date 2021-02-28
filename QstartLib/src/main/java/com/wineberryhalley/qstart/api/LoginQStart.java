@@ -769,7 +769,7 @@ showSuccessTiming(getString(R.string.logged), false, false);
 
     @Override
     public void onChecked(String user_id) {
-        Log.e(TAG, "onChecked: exist "+user_id );
+    //    Log.e(TAG, "onChecked: exist "+user_id );
 
     }
 
