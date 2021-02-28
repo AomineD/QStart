@@ -1284,10 +1284,10 @@ this.onDismissListener = dismissListener;
                 req = "◾"+getString(R.string.your_country)+"\n";
             }
             if(requireGender){
-                req = "◾"+getString(R.string.your_gender)+"\n";
+                req = req+"◾"+getString(R.string.your_gender)+"\n";
             }
             if(requirePhoto){
-                req = "◾"+getString(R.string.some_ph);
+                req = req+ "◾"+getString(R.string.some_ph);
             }
 
             required.setText(req);
