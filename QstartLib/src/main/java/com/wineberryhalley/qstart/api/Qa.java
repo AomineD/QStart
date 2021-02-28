@@ -183,7 +183,18 @@ public class Qa {
 userListener.needSignUp();
                 }else{
                     if(tinyDB.getUserLogged() != null && !tinyDB.getUserLogged().user_id.isEmpty()) {
-                        userListener.onChecked(tinyDB.getUserLogged().user_id);
+                        checkUserAvailibity(activity, abb, new CheckListener() {
+                            @Override
+                            public void onSuccess(User user) {
+                                user.saveUser();
+                                userListener.onLogin(user);
+                            }
+
+                            @Override
+                            public void onError(String erno) {
+                                userListener.onError(erno);
+                            }
+                        });
                     }else{
                         try {
 
