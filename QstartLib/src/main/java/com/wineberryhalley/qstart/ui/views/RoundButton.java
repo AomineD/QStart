@@ -4,13 +4,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.res.TypedArray;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -66,8 +62,8 @@ public class RoundButton extends RelativeLayout {
 
         try {
             //get the text and colors specified using the names in attrs.xml
-            colorBackground = a.getColor(R.styleable.RoundButton_backgroundColor, getContext().getResources().getColor(R.color.dark));
-            textColor = a.getColor(R.styleable.RoundButton_textColor, getContext().getResources().getColor(R.color.white));//0 is default
+            colorBackground = a.getColor(R.styleable.RoundButton_backgroundColor, getContext().getResources().getColor(R.color.dark_qs));
+            textColor = a.getColor(R.styleable.RoundButton_textColor, getContext().getResources().getColor(R.color.white_qs));//0 is default
             isBold = a.getBoolean(R.styleable.RoundButton_textBold, false);
             textSize = a.getInteger(R.styleable.RoundButton_textSize, 0);
             buttonRadius = a.getDimension(R.styleable.RoundButton_buttonRadius, 0);

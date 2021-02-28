@@ -96,4 +96,5 @@
     <string name="spc_isr">Username should haven\'t spaces</string>
     <string name="recovering_">Recovering user...</string>
     <string name="password_or_user">Password or username incorrect</string>
+    <string name="try_again">Try again</string>
 </resources>

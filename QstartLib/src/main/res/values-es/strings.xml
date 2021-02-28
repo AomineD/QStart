@@ -99,4 +99,5 @@
   <string name="spc_isr">Nombre de usuario no debe tener espacios</string>
   <string name="recovering_">Recuperando usuario…</string>
   <string name="password_or_user">Contraseña o Nombre de usuario incorrecto</string>
+  <string name="try_again">Reintentar</string>
 </resources>

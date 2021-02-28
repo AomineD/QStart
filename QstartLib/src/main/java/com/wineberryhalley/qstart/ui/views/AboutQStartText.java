@@ -2,7 +2,6 @@ package com.wineberryhalley.qstart.ui.views;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.view.View;
@@ -30,7 +29,7 @@ public class AboutQStartText extends AppCompatTextView {
     private void init() {
         setText(R.string.about_qs);
         setTypeface(getTypeface(), Typeface.BOLD_ITALIC);
-        setTextColor(getContext().getResources().getColor(R.color.dark));
+        setTextColor(getContext().getResources().getColor(R.color.dark_qs));
         setPadding(10, 10, 10, 10);
     }
 

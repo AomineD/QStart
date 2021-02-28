@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardBackgroundColor="@color/white"
+    app:cardBackgroundColor="@color/white_qs"
     app:cardElevation="9dp"
     app:cardUseCompatPadding="true"
     app:cardCornerRadius="5dp"
@@ -45,7 +45,7 @@
             android:layout_marginTop="5dp"
             android:text="@string/usa"
             android:textAlignment="center"
-            android:textColor="@color/black2"
+            android:textColor="@color/black2_qs"
             android:maxLines="2"
             android:textSize="16sp"
             android:textStyle="bold" />

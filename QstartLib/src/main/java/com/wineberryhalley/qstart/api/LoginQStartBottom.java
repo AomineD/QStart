@@ -92,7 +92,7 @@ loginQStartBottom.isRequired = true;
     }
 
     private ImageLoadingView img;
-    private RoundButton roundButton;
+    private RoundButton roundButton, closeButton;
     private LottieAnimationView loading;
     private TextView textView;
     private AboutQStartText aboutQStartText;
@@ -112,6 +112,7 @@ if(getActivity() != null){
 getTextTitle();
 
 roundButton = find(R.id.boton_log);
+closeButton = find(R.id.close_bt);
 
 roundButton.setOnClickListener(new View.OnClickListener() {
     @Override
@@ -269,8 +270,20 @@ hideLoadingLogging(user);
     public void onResume() {
         super.onResume();
         Log.e("MAIN", "onResume: resumido" );
-        if(writePerms){
+        if(writePerms && Qa.canReadAndWrite(getActivity())){
             textView.setText(R.string.permission_accept_lg);
+            textView.setTextSize(16);
+            writePerms = false;
+        }else if(writePerms){
+            roundButton.setText(R.string.try_again);
+            closeButton.setVisibility(View.VISIBLE);
+            closeButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dismissAllowingStateLoss();
+                }
+            });
+            textView.setText(R.string.permiss_nosucc);
             textView.setTextSize(16);
             writePerms = false;
         }

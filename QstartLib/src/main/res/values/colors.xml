@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primary">#ff8557</color>
-    <color name="dark">#fe4459</color>
+    <color name="primary_qs">#ff8557</color>
+    <color name="dark_qs">#fe4459</color>
 
 
-    <color name="white">#fff</color>
-    <color name="black">#000</color>
-    <color name="black2">#212121</color>
+    <color name="white_qs">#fff</color>
+    <color name="black_qs">#000</color>
+    <color name="black2_qs">#212121</color>
 
-    <color name="gray">#8F8F8F</color>
+    <color name="gray_qs">#8F8F8F</color>
 </resources>

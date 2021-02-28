@@ -21,7 +21,6 @@ import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.wineberryhalley.qstart.R;
-import com.wineberryhalley.qstart.utils.Timer;
 
 import java.util.Random;
 
@@ -82,16 +81,16 @@ private int tabpos = 2;
         int pos = new Random().nextInt(2);
         switch (pos) {
             case 0:
-                colorReveal = getColor(getContext(), R.color.primary);
+                colorReveal = getColor(getContext(), R.color.primary_qs);
                 break;
             case 1:
-                colorReveal = getColor(getContext(), R.color.dark);
+                colorReveal = getColor(getContext(), R.color.dark_qs);
                 break;
             case 2:
-                colorReveal = getColor(getContext(), R.color.primary);
+                colorReveal = getColor(getContext(), R.color.primary_qs);
                 break;
             default:
-                colorReveal = getColor(getContext(), R.color.dark);
+                colorReveal = getColor(getContext(), R.color.dark_qs);
         }
 
         int x =  (int) (posReveal.getX() + posReveal.getWidth() / tabpos);
@@ -102,7 +101,7 @@ private int tabpos = 2;
                     y,
                     container.getWidth(),
                     container.getHeight());
-           registerCircularRevealAnimation(getContext(), v, revealAnimationSettings, colorReveal, getColor(getContext(), R.color.white));
+           registerCircularRevealAnimation(getContext(), v, revealAnimationSettings, colorReveal, getColor(getContext(), R.color.white_qs));
         }
         return v;
     }

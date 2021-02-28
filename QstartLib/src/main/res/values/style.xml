@@ -9,15 +9,15 @@
     </style>
 
     <style name="Autocomplete">
-        <item name="colorControlNormal">@color/white</item>
-        <item name="colorControlActivated">@color/white</item>
+        <item name="colorControlNormal">@color/white_qs</item>
+        <item name="colorControlActivated">@color/white_qs</item>
     </style>
 
     <style name="LogQs" parent="Theme.AppCompat.NoActionBar">
-        <item name="colorPrimary">@color/primary</item>
-        <item name="colorPrimaryDark">@color/dark</item>
-        <item name="colorAccent">@color/white</item>
+        <item name="colorPrimary">@color/primary_qs</item>
+        <item name="colorPrimaryDark">@color/dark_qs</item>
+        <item name="colorAccent">@color/white_qs</item>
 
-        <item name="android:textColorHint">@color/white</item>
+        <item name="android:textColorHint">@color/white_qs</item>
     </style>
 </resources>

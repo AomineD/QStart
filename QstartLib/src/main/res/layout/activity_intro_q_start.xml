@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:attrs="http://schemas.android.com/tools"
-    android:background="@color/white"
+    android:background="@color/white_qs"
     tools:context=".intro.IntroQStart">
 
     <LinearLayout
@@ -34,7 +34,7 @@
             android:padding="10dp"
             android:text="QStart"
             android:textAlignment="center"
-            android:textColor="@color/black2"
+            android:textColor="@color/black2_qs"
             android:textSize="24sp"
             android:textStyle="normal" />
     </LinearLayout>
@@ -56,8 +56,8 @@
         app:piv_dynamicCount="true"
         android:layout_marginBottom="5dp"
         app:piv_interactiveAnimation="true"
-        app:piv_selectedColor="@color/primary"
-        app:piv_unselectedColor="@color/gray"
+        app:piv_selectedColor="@color/primary_qs"
+        app:piv_unselectedColor="@color/gray_qs"
         android:layout_above="@id/linlay"
         attrs:piv_padding="15dp"
         attrs:piv_radius="15dp" />
@@ -75,11 +75,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            app:backgroundColor="@color/dark"
+            app:backgroundColor="@color/dark_qs"
             app:buttonElevation="5dp"
             app:buttonRadius="10dp"
             app:textBold="true"
-            app:textColor="@color/white"
+            app:textColor="@color/white_qs"
             app:text="@string/previous"
             app:textPadding="10dp"
             app:textSize="18">
@@ -91,11 +91,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            app:backgroundColor="@color/dark"
+            app:backgroundColor="@color/dark_qs"
             app:buttonElevation="5dp"
             app:buttonRadius="10dp"
             app:textBold="true"
-            app:textColor="@color/white"
+            app:textColor="@color/white_qs"
             app:text="@string/next"
             app:textPadding="10dp"
             app:textSize="18">

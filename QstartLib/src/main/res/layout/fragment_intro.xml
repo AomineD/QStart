@@ -33,7 +33,7 @@ android:scaleType="centerCrop"
             android:padding="20dp"
             android:text="Intro de Qstart"
             android:textAlignment="center"
-            android:textColor="@color/black2"
+            android:textColor="@color/black2_qs"
             android:textSize="18sp"
             android:textStyle="normal" />
 

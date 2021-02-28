@@ -35,7 +35,7 @@
         android:layout_marginTop="40dp"
         android:text="@string/titl_lg_qt"
         android:textAlignment="center"
-        android:textColor="@color/black2"
+        android:textColor="@color/black2_qs"
         android:paddingEnd="15dp"
         android:paddingStart="15dp"
         android:textSize="22sp"
@@ -61,7 +61,12 @@ android:layout_centerInParent="true"
         app:textPadding="8dp"
         app:textSize="16">
 
+
+
     </com.wineberryhalley.qstart.ui.views.RoundButton>
+
+
+
         <com.airbnb.lottie.LottieAnimationView
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -75,6 +80,22 @@ android:layout_centerInParent="true"
 
     </RelativeLayout>
 
+    <com.wineberryhalley.qstart.ui.views.RoundButton
+        android:id="@+id/close_bt"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        app:buttonElevation="5dp"
+        android:visibility="gone"
+        app:buttonRadius="8dp"
+        app:text="@string/close_"
+        app:backgroundColor="@color/white_qs"
+        app:textColor="@color/black2_qs"
+        android:layout_marginBottom="8dp"
+        app:textBold="true"
+        app:textPadding="8dp"
+        app:textSize="16"/>
+
     <com.wineberryhalley.qstart.ui.views.AboutQStartText
         android:id="@+id/about_qstart"
         android:layout_width="wrap_content"
@@ -82,7 +103,7 @@ android:layout_centerInParent="true"
         android:layout_gravity="center"
         android:layout_marginBottom="5dp"
         android:textAlignment="center"
-        android:textColor="@color/black2"
+        android:textColor="@color/black2_qs"
         android:textSize="18sp">
 
     </com.wineberryhalley.qstart.ui.views.AboutQStartText>

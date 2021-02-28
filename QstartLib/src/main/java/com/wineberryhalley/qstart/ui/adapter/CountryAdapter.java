@@ -2,7 +2,6 @@ package com.wineberryhalley.qstart.ui.adapter;
 
 import android.app.Activity;
 import android.graphics.Color;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -12,7 +11,6 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.airbnb.lottie.LottieAnimationView;
-import com.squareup.picasso.Picasso;
 import com.wineberryhalley.qstart.R;
 import com.wineberryhalley.qstart.base.BaseAdapter;
 import com.wineberryhalley.qstart.base.PicassoUtils;
@@ -84,14 +82,14 @@ private LottieAnimationView lt;
         public void setConfig(Country model){
             if(model.isSelected){
                 tt.setText(model.getNameTranslated());
-                cardView.setCardBackgroundColor(getContext().getResources().getColor(R.color.dark));
+                cardView.setCardBackgroundColor(getContext().getResources().getColor(R.color.dark_qs));
                 tt.setTextColor(Color.WHITE);
                 lt.setVisibility(View.VISIBLE);
                 PicassoUtils.loadCountryFlag(model.getAlpha2Code(), img_country, lt);
             }else{
             //    Log.e("MAIN", "setConfig: "+model.getFlag());
                 cardView.setCardBackgroundColor(Color.WHITE);
-               tt.setTextColor(getContext().getResources().getColor(R.color.black2));
+               tt.setTextColor(getContext().getResources().getColor(R.color.black2_qs));
                 tt.setText(model.getNameTranslated());
                 lt.setVisibility(View.VISIBLE);
                 PicassoUtils.loadCountryFlag(model.getAlpha2Code(), img_country, lt);
@@ -99,13 +97,13 @@ private LottieAnimationView lt;
         }
 
         public void select(){
-            cardView.setCardBackgroundColor(getContext().getResources().getColor(R.color.dark));
+            cardView.setCardBackgroundColor(getContext().getResources().getColor(R.color.dark_qs));
             tt.setTextColor(Color.WHITE);
         }
 
         public void deselect(){
             cardView.setCardBackgroundColor(Color.WHITE);
-            tt.setTextColor(getContext().getResources().getColor(R.color.black2));
+            tt.setTextColor(getContext().getResources().getColor(R.color.black2_qs));
         }
     }
 

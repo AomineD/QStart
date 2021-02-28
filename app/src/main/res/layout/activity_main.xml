@@ -26,12 +26,12 @@
             android:layout_marginTop="15dp"
             android:layout_gravity="center"
             android:baselineAligned="false"
-            app:backgroundColor="@color/dark"
+            app:backgroundColor="@color/dark_qs"
             app:buttonElevation="5dp"
             app:buttonRadius="10dp"
             app:text="JAJA"
             app:textBold="false"
-            app:textColor="@color/white"
+            app:textColor="@color/white_qs"
             app:textPadding="8dp"
             app:textSize="18">
 

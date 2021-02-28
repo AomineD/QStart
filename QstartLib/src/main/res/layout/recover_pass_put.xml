@@ -23,7 +23,7 @@
         android:padding="10dp"
         android:text="@string/rcver_put"
         android:textAlignment="center"
-        android:textColor="@color/black2"
+        android:textColor="@color/black2_qs"
         android:textSize="20sp"
         android:textStyle="normal" />
 
@@ -61,12 +61,12 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
-            app:backgroundColor="@color/dark"
+            app:backgroundColor="@color/dark_qs"
             app:buttonElevation="10dp"
             app:buttonRadius="8dp"
             app:text="@string/save_pass_"
             app:textBold="true"
-            app:textColor="@color/white"
+            app:textColor="@color/white_qs"
             app:textPadding="8dp"
             app:textSize="16" />
 
@@ -76,12 +76,12 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
-            app:backgroundColor="@color/white"
+            app:backgroundColor="@color/white_qs"
             app:buttonElevation="10dp"
             app:buttonRadius="8dp"
             app:text="@string/skip_for_now"
             app:textBold="true"
-            app:textColor="@color/black2"
+            app:textColor="@color/black2_qs"
             app:textPadding="8dp"
             app:textSize="16" />
 

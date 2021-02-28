@@ -834,7 +834,7 @@ showSuccessTiming(getString(R.string.logged), false);
         TextView tv = findViewById(R.id.policy);
 
         String pol = "\n "+getString(R.string.wn_pol);
-        SpannableString link = makeLinkSpan(getResources().getColor(R.color.dark), pol, new View.OnClickListener() {
+        SpannableString link = makeLinkSpan(getResources().getColor(R.color.dark_qs), pol, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // respond to click

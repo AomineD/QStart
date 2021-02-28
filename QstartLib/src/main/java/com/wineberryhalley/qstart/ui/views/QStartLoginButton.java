@@ -21,6 +21,7 @@ import androidx.annotation.Nullable;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 import com.wineberryhalley.qstart.R;
+import com.wineberryhalley.qstart.api.LoginQStartBottom;
 
 public class QStartLoginButton extends RelativeLayout {
     public QStartLoginButton(@NonNull Context context, @Nullable AttributeSet attrs) {
@@ -77,7 +78,7 @@ this.addView(v);
             public void onClick(View v) {
                 if(onClickListener != null){
                     RotateAnimation rotate = new RotateAnimation(0, 360, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
-                    rotate.setDuration(500);
+                    rotate.setDuration(400);
                     rotate.setRepeatCount(4);
                     t.setVisibility(GONE);
                     rotate.setInterpolator(new LinearInterpolator());

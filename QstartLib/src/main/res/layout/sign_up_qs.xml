@@ -26,7 +26,7 @@
             android:padding="10dp"
             android:text="@string/signup"
             android:textAlignment="center"
-            android:textColor="@color/black2"
+            android:textColor="@color/black2_qs"
             android:textSize="20sp"
             android:textStyle="normal" />
 
@@ -63,7 +63,7 @@
             android:layout_marginTop="15dp"
             android:layout_marginEnd="5dp"
             android:layout_marginBottom="10dp"
-            android:background="@color/gray" />
+            android:background="@color/gray_qs" />
 
         <LinearLayout
             android:id="@+id/rot_lin_country"
@@ -82,7 +82,7 @@
                 android:padding="10dp"
                 android:text="@string/country"
                 android:textAlignment="textStart"
-                android:textColor="@color/black2"
+                android:textColor="@color/black2_qs"
                 android:textSize="20sp"
                 android:textStyle="normal" />
 
@@ -91,7 +91,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="5dp"
-                app:cardBackgroundColor="@color/dark"
+                app:cardBackgroundColor="@color/dark_qs"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="4dp"
                 app:cardUseCompatPadding="true">
@@ -117,7 +117,7 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="150dp"
                 android:layout_height="160dp"
-                app:cardBackgroundColor="@color/white"
+                app:cardBackgroundColor="@color/white_qs"
                 app:cardCornerRadius="5dp"
                 app:cardElevation="9dp"
                 app:cardUseCompatPadding="true">
@@ -165,7 +165,7 @@
                         android:padding="10dp"
                         android:text="@string/usa"
                         android:textAlignment="center"
-                        android:textColor="@color/black2"
+                        android:textColor="@color/black2_qs"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
@@ -179,12 +179,12 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
-                app:backgroundColor="@color/dark"
+                app:backgroundColor="@color/dark_qs"
                 app:buttonElevation="10dp"
                 app:buttonRadius="8dp"
                 app:text="@string/change_c"
                 app:textBold="true"
-                app:textColor="@color/white"
+                app:textColor="@color/white_qs"
                 app:textPadding="8dp"
                 app:textSize="16" />
         </LinearLayout>
@@ -196,7 +196,7 @@
             android:layout_marginTop="15dp"
             android:layout_marginEnd="5dp"
             android:layout_marginBottom="10dp"
-            android:background="@color/gray" />
+            android:background="@color/gray_qs" />
 
         <LinearLayout
             android:id="@+id/rot_lin_gend"
@@ -215,7 +215,7 @@
                 android:padding="10dp"
                 android:text="@string/gend_c"
                 android:textAlignment="textStart"
-                android:textColor="@color/black2"
+                android:textColor="@color/black2_qs"
                 android:textSize="20sp"
                 android:textStyle="normal" />
 
@@ -224,7 +224,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="5dp"
-                app:cardBackgroundColor="@color/dark"
+                app:cardBackgroundColor="@color/dark_qs"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="4dp"
                 app:cardUseCompatPadding="true">
@@ -245,7 +245,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="gone"
-            app:cardBackgroundColor="@color/dark"
+            app:cardBackgroundColor="@color/dark_qs"
             app:cardCornerRadius="8dp"
             app:cardElevation="5dp"
             app:cardUseCompatPadding="true">
@@ -267,7 +267,7 @@
             android:layout_marginTop="15dp"
             android:layout_marginEnd="5dp"
             android:layout_marginBottom="10dp"
-            android:background="@color/gray" />
+            android:background="@color/gray_qs" />
 
         <LinearLayout
             android:id="@+id/rot_photo_lin"
@@ -286,7 +286,7 @@
                 android:padding="10dp"
                 android:text="@string/img_prof"
                 android:textAlignment="textStart"
-                android:textColor="@color/black2"
+                android:textColor="@color/black2_qs"
                 android:textSize="20sp"
                 android:textStyle="normal" />
 
@@ -295,7 +295,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="5dp"
-                app:cardBackgroundColor="@color/dark"
+                app:cardBackgroundColor="@color/dark_qs"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="4dp"
                 app:cardUseCompatPadding="true">
@@ -331,12 +331,12 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                app:backgroundColor="@color/dark"
+                app:backgroundColor="@color/dark_qs"
                 app:buttonElevation="10dp"
                 app:buttonRadius="8dp"
                 app:text="@string/upload"
                 app:textBold="true"
-                app:textColor="@color/white"
+                app:textColor="@color/white_qs"
                 app:textPadding="8dp"
                 app:textSize="16" />
 
@@ -349,12 +349,12 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
-            app:backgroundColor="@color/dark"
+            app:backgroundColor="@color/dark_qs"
             app:buttonElevation="10dp"
             app:buttonRadius="8dp"
             app:text="@string/signupnow"
             app:textBold="true"
-            app:textColor="@color/white"
+            app:textColor="@color/white_qs"
             app:textPadding="8dp"
             app:textSize="16" />
 
@@ -368,7 +368,7 @@
             android:text="@string/priv_st"
             android:textAlignment="center"
             android:layout_marginBottom="8dp"
-            android:textColor="@color/black2"
+            android:textColor="@color/black2_qs"
             android:textSize="16sp"
             android:textStyle="bold" />
     </LinearLayout>
