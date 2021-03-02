@@ -45,8 +45,7 @@ public class Ecapdamond {
     protected Ecapdamond(){
         activity = QStartProvider.context;
 queue = Volley.newRequestQueue(activity);
-        SharedPreferences a = activity.getSharedPreferences("qkt", Context.MODE_PRIVATE);
-setk(a.getString(am_mwql, ""));
+
         try {
             Class<?> klass = Class.forName(BuildConfig.LIBRARY_PACKAGE_NAME+".BuildConfig");
             Field f = klass.getField("a_cmmon");
@@ -60,8 +59,9 @@ setk(a.getString(am_mwql, ""));
 
     String URL = "";
     String API_SECRECT_KEY;
-    private void setk(String a){
-        API_SECRECT_KEY = a;
+    private void setk(){
+        SharedPreferences a = activity.getSharedPreferences("qkt", Context.MODE_PRIVATE);
+        API_SECRECT_KEY =a.getString(am_mwql, "");
     }
     String login() {
         return URL+"login";
@@ -501,6 +501,7 @@ JSONObject response = responseq.getJSONObject("data");
 
     private Map<String, String> getPostP(){
           Map<String, String> ma = new HashMap<>();
+          setk();
         ma.put("package", API_SECRECT_KEY);
         return ma;
     }
@@ -529,7 +530,8 @@ JSONObject response = responseq.getJSONObject("data");
     }
 
     public void sendImage( final String image, final String usern, final UploadListener listener) {
-     StringRequest stringRequest = new StringRequest(Request.Method.POST, up(), new Response.Listener<String>() {
+        setk();
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, up(), new Response.Listener<String>() {
          @Override
          public void onResponse(String response) {
         //   Log.e("MAIN", response);

@@ -70,11 +70,6 @@ public class LoginQStart extends AppCompatActivity implements Qa.UserListener, S
     private static boolean requirePhoto = false;
     private static boolean requireGender = false;
 
-    public static boolean testMode = false;
-
-    public static void testMode(){
-        testMode = true;
-    }
 
     private static int icon_res = 0;
 
