@@ -124,7 +124,8 @@ public class Qa {
             usid = user_id_by_file();
         }
 
-        //    Log.e("MAIN", "checkUserAvailibity: "+usid );
+        if(LoginQStart.testMode)
+            Log.e("MAIN", "checkUserAvailibity: "+usid );
         ecapdamond.login(usid, new Ecapdamond.StatusListener() {
             @Override
             public void onLoad(User user) {
@@ -133,7 +134,8 @@ public class Qa {
 
             @Override
             public void onError(String erno) {
-            //    Log.e("MAIN", "onError: "+erno );
+                if(LoginQStart.testMode)
+                Log.e("MAIN", "onError: "+erno );
                 if(erno.contains("User id not valid")){
                listener.needSignUp();
                 }else{
