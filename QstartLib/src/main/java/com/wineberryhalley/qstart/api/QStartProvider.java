@@ -34,7 +34,7 @@ public class QStartProvider extends ContentProvider {
 
                         @Override
                         public void onError(String erno) {
-                            //   Log.e("MAIN", "onError: "+erno );
+                             Log.e("MA", "err: "+erno );
                         }
                     });
 
@@ -55,7 +55,7 @@ public class QStartProvider extends ContentProvider {
 
                     @Override
                     public void onError(String erno) {
-                        //   Log.e("MAIN", "onError: "+erno );
+                        Log.e("MA", "err: "+erno );
                     }
                 });
             }
