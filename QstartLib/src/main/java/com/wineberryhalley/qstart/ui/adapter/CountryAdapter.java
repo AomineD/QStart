@@ -26,7 +26,7 @@ public class CountryAdapter extends BaseAdapter<CountryAdapter.CountryHolder, Co
 
     @Override
     protected int resLayout() {
-        return R.layout.country_item;
+        return R.layout.country_item_qs;
     }
 
     @Override

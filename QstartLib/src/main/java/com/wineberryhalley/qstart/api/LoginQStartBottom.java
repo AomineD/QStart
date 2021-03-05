@@ -252,7 +252,7 @@ img.loadImgCircle(R.drawable.placeholder_img);
     @Override
     public void onError(String erno) {
 showError(erno);
-        Log.e("MAIN", "onError: "+erno );
+ //       Log.e("MAIN", "onError: "+erno );
     }
 
     @Override
@@ -269,7 +269,7 @@ hideLoadingLogging(user);
     @Override
     public void onResume() {
         super.onResume();
-        Log.e("MAIN", "onResume: resumido" );
+    //    Log.e("MAIN", "onResume: resumido" );
         if(writePerms && Qa.canReadAndWrite(getActivity())){
             textView.setText(R.string.permission_accept_lg);
             textView.setTextSize(16);

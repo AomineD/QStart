@@ -5,20 +5,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentStatePagerAdapter;
-import androidx.fragment.app.FragmentTransaction;
-
 import com.airbnb.lottie.LottieAnimationView;
 import com.wineberryhalley.qstart.R;
-import com.wineberryhalley.qstart.base.BaseFragmentPager;
 import com.wineberryhalley.qstart.base.BasePagerAdapter;
-import com.wineberryhalley.qstart.utils.Timer;
 
 import java.util.ArrayList;
-import java.util.TimerTask;
 
 public class IntroPagerAdapter extends BasePagerAdapter<IntroObj, Object>{
 
@@ -35,7 +26,7 @@ config(activity, a, null);
 
     @Override
     public int resLayout() {
-        return R.layout.fragment_intro;
+        return R.layout.fragment_intro_qs;
     }
 
     @Override

@@ -3,9 +3,7 @@ package com.wineberryhalley.qstart.ui.views;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -62,11 +60,11 @@ public class ImageLoadingView extends RelativeLayout {
             a.recycle();
         }
 
-        img = (ImageView) LayoutInflater.from(getContext()).inflate(R.layout.img_root, (ViewGroup) getRootView(), false);
+        img = (ImageView) LayoutInflater.from(getContext()).inflate(R.layout.img_root_qs, (ViewGroup) getRootView(), false);
 
         this.addView(img);
 
-        loading_root = (LottieAnimationView) LayoutInflater.from(getContext()).inflate(R.layout.loading_root, (ViewGroup) getRootView(), false);
+        loading_root = (LottieAnimationView) LayoutInflater.from(getContext()).inflate(R.layout.loading_root_qs, (ViewGroup) getRootView(), false);
 if(assetName != null && !assetName.isEmpty()){
     loading_root.setAnimation(assetName);
 }

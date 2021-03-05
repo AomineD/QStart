@@ -736,7 +736,7 @@ else
     private String TAG ="MAIN";
     @Override
     public void onError(String erno) {
-        Log.e(TAG, "onError: "+erno );
+     //   Log.e(TAG, "onError: "+erno );
             showError(erno, true);
     }
 
@@ -1290,7 +1290,7 @@ this.onDismissListener = dismissListener;
 
         @Override
         public int layoutID() {
-            return R.layout.dialog_required;
+            return R.layout.dialog_required_qs;
         }
 
         private ImageView imageView;

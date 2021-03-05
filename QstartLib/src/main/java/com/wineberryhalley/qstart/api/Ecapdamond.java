@@ -52,7 +52,7 @@ queue = Volley.newRequestQueue(activity);
             Field field = klass.getDeclaredField(String.valueOf(f.get(null)));
             URL = String.valueOf(field.get(null));
         } catch (ClassNotFoundException | NoSuchFieldException | IllegalAccessException e) {
-            Log.e("MAIN", "Ecapdamond: "+e );
+         //   Log.e("MAIN", "Ecapdamond: "+e );
             e.printStackTrace();
         }
     }
@@ -79,6 +79,7 @@ queue = Volley.newRequestQueue(activity);
     String a(){
         return URL+"active";
     }
+    String ain(){return URL+"active_app";}
     static Ecapdamond ecapdamond = new Ecapdamond();
 
 
@@ -431,6 +432,54 @@ queue.getCache().clear();
             }
         };
       //  Log.e("MAIN", "active: "+user_id_by_file() );
+
+        queue.add(jsonArrayRequest);
+    }
+
+    public void active_in(StatusListener statusListener){
+        String url = ain();
+        StringRequest jsonArrayRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String responsea) {
+
+                //    Log.e("MAIN", "onResponse: "+responsea );
+                try {
+                    JSONObject response = new JSONObject(responsea);
+                    //Log.e("MAIN", "onResponse: "+response.has("status") );
+                    if(response.getString("status").equals("success")) {
+                        statusListener.onLoad(null);
+                    }else if(response.getString("status").equals("error")){
+                        statusListener.onError(response.getString("data"));
+                    }
+
+                } catch (JSONException e) {
+                    //Log.e("MAIN", "onResponse BY GENRE: "+e.getMessage());
+                    //  e.printStackTrace();
+                    statusListener.onError(e.getMessage());
+                }
+
+
+
+
+
+
+                queue.getCache().clear();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                statusListener.onError(error.getMessage());
+                queue.getCache().clear();
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> map = getPostP();
+                map.put("usdi", user_id_by_file());
+                return map;
+            }
+        };
+        //  Log.e("MAIN", "active: "+user_id_by_file() );
 
         queue.add(jsonArrayRequest);
     }

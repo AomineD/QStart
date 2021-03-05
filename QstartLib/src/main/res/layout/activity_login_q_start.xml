@@ -254,7 +254,7 @@ app:srcCompat="@drawable/back_ic"
 
     <include
         android:id="@+id/recover_lay"
-        layout="@layout/recover_layout"
+        layout="@layout/recover_layout_qs"
         android:visibility="gone"
         />
     <include
