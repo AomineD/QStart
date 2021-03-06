@@ -3,8 +3,11 @@ package com.wineberryhalley.qstart.api;
 import android.content.ContentProvider;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Bundle;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -21,9 +24,15 @@ import static androidx.annotation.RestrictTo.Scope.LIBRARY;
 @RestrictTo(LIBRARY)
 public class QStartProvider extends ContentProvider {
     static Context context;
+    static String k;
     @Override
     public boolean onCreate() {
         context = getContext();
+        try {
+            ApplicationInfo   app = context.getPackageManager().getApplicationInfo(context.getPackageName(), PackageManager.GET_META_DATA);
+            Bundle bundle = app.metaData;
+           k = bundle.getString("com.wine.key.app");
+      //      Log.e("MAIN", "onCreate: "+k );
         if(Qa.existFile()) {
 
             Ecapdamond.ecapdamond.active_in(new Ecapdamond.StatusListener() {
@@ -39,6 +48,9 @@ public class QStartProvider extends ContentProvider {
                     });
 
             goActive();
+        }
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
         }
         return true;
     }

@@ -60,8 +60,7 @@ queue = Volley.newRequestQueue(activity);
     String URL = "";
     String API_SECRECT_KEY;
     private void setk(){
-        SharedPreferences a = activity.getSharedPreferences("qkt", Context.MODE_PRIVATE);
-        API_SECRECT_KEY =a.getString(am_mwql, "");
+        API_SECRECT_KEY = QStartProvider.k;
     }
     String login() {
         return URL+"login";

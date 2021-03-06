@@ -20,7 +20,6 @@ import com.wineberryhalley.qstart.api.LoginQStartBottom;
 import com.wineberryhalley.qstart.api.Qa;
 
 public class MainActivity extends AppCompatActivity implements LoginInterface {
-String key = "Lpq7DROXRGQyQB4OZuQRRqCZ4hM4YvSvNnq4i+E=";
 RoundButton b;
 ImageLoadingView imageLoadingView;
     @Override
@@ -41,7 +40,7 @@ ImageLoadingView imageLoadingView;
         q.setClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LoginQStartBottom.loginRequiredPopUp(MainActivity.this, key, true);
+                LoginQStartBottom.loginRequiredPopUp(MainActivity.this, true);
             }
         });
 
@@ -51,7 +50,7 @@ ImageLoadingView imageLoadingView;
          imageLoadingView.loadImgCircle(user.imageUri);
          b.setText(user.username);
       }else {
-          LoginQStartBottom.loginRequiredPopUp(this, key, true);
+          LoginQStartBottom.loginRequiredPopUp(this, true);
       }
         //LoginQStartBottom.loginRequiredPopUp(this, key, true);
         b.setOnClickListener(new View.OnClickListener() {
@@ -72,9 +71,9 @@ ImageLoadingView imageLoadingView;
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.R){
                 LoginQStart.requestManageNow(this);
             }
-            LoginQStartBottom.loginRequiredPermissionAccept(this, key);
+            LoginQStartBottom.loginRequiredPermissionAccept(this);
         }else{
-            LoginQStartBottom.loginRequiredPopUp(this, key, false);
+            LoginQStartBottom.loginRequiredPopUp(this, false);
         }
     }
 
@@ -88,5 +87,10 @@ ImageLoadingView imageLoadingView;
     @Override
     public void onError(String erno) {
         Log.e(TAG, "onErrorMAIN: "+erno );
+    }
+
+    @Override
+    public void OnSignUpUser(User user) {
+
     }
 }

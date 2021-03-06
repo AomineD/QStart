@@ -25,59 +25,56 @@ public class LoginQStartBottom extends BottomBaseShet implements Qa.UserListener
 
     }
 
-    String k = "";
-    public static void showLoginPopUp(AppCompatActivity activity, String key, boolean ask){
+    public static void showLoginPopUp(AppCompatActivity activity, boolean ask){
         LoginQStartBottom loginQStartBottom = new LoginQStartBottom();
-        loginQStartBottom = loginQStartBottom.get(key, ask);
+        loginQStartBottom = loginQStartBottom.get( ask);
         loginQStartBottom.show(activity.getSupportFragmentManager(), "qkfrmk");
     }
 
-    public static void showLoginPopUpAcccepted(AppCompatActivity activity, String key, boolean ask){
+    public static void showLoginPopUpAcccepted(AppCompatActivity activity, boolean ask){
         LoginQStartBottom loginQStartBottom = new LoginQStartBottom();
-        loginQStartBottom = loginQStartBottom.get(key, ask);
+        loginQStartBottom = loginQStartBottom.get( ask);
         loginQStartBottom.permissionResult = true;
         loginQStartBottom.show(activity.getSupportFragmentManager(), "qkfrmk");
     }
 
-    public static void showLoginPopUpDenied(AppCompatActivity activity, String key, boolean ask){
+    public static void showLoginPopUpDenied(AppCompatActivity activity, boolean ask){
         LoginQStartBottom loginQStartBottom = new LoginQStartBottom();
-        loginQStartBottom = loginQStartBottom.get(key, ask);
+        loginQStartBottom = loginQStartBottom.get( ask);
         loginQStartBottom.permissionResult = false;
         loginQStartBottom.show(activity.getSupportFragmentManager(), "qkfrmk");
     }
 
-    protected LoginQStartBottom get(String key, boolean ask){
+    protected LoginQStartBottom get(boolean ask){
         LoginQStartBottom loginQStartBottom = new LoginQStartBottom();
-    loginQStartBottom.k = key;
     loginQStartBottom.askPermiss = ask;
     return loginQStartBottom;
     }
 
-    protected LoginQStartBottom getRequired(String key){
+    protected LoginQStartBottom getRequired(){
         LoginQStartBottom loginQStartBottom = new LoginQStartBottom();
-        loginQStartBottom.k = key;
         loginQStartBottom.isRequired = true;
         return loginQStartBottom;
     }
 
 
-    public static void loginRequiredPopUp(AppCompatActivity activity, String key, boolean ask){
+    public static void loginRequiredPopUp(AppCompatActivity activity, boolean ask){
         LoginQStartBottom loginQStartBottom = new LoginQStartBottom();
-        loginQStartBottom = loginQStartBottom.get(key, ask);
+        loginQStartBottom = loginQStartBottom.get( ask);
 loginQStartBottom.isRequired = true;
         loginQStartBottom.show(activity.getSupportFragmentManager(), "qkfrmk");
     }
 
-    public static void loginRequiredPermissionAccept(AppCompatActivity activity, String key){
+    public static void loginRequiredPermissionAccept(AppCompatActivity activity){
         LoginQStartBottom loginQStartBottom = new LoginQStartBottom();
-        loginQStartBottom = loginQStartBottom.getRequired(key);
+        loginQStartBottom = loginQStartBottom.getRequired();
         loginQStartBottom.permissionResult = true;
         loginQStartBottom.show(activity.getSupportFragmentManager(), "qkfrmk");
     }
 
-    public static void loginRequiredPermissionNo(AppCompatActivity activity, String key){
+    public static void loginRequiredPermissionNo(AppCompatActivity activity){
         LoginQStartBottom loginQStartBottom = new LoginQStartBottom();
-        loginQStartBottom = loginQStartBottom.getRequired(key);
+        loginQStartBottom = loginQStartBottom.getRequired();
         loginQStartBottom.permissionResult = false;
         loginQStartBottom.show(activity.getSupportFragmentManager(), "qkfrmk");
     }
@@ -119,7 +116,7 @@ roundButton.setOnClickListener(new View.OnClickListener() {
     public void onClick(View v) {
         if(askPermiss && !Qa.canReadAndWrite(getActivity())) {
            // Qa.requestPermiss(getActivity());
-            LoginQStart.initWritePermission(getActivity(), k);
+            LoginQStart.initWritePermission(getActivity());
             writePerms = true;
          //   dismissAllowingStateLoss();
         }else if(permissionResult || Qa.canReadAndWrite(getActivity())){
@@ -140,14 +137,12 @@ img.loadImgCircle(R.drawable.placeholder_img);
 
     }
     private void passToBig(){
-        LoginQStart.init(getActivity(), k, getActivity().getPackageName());
+        LoginQStart.init(getActivity(), getActivity().getPackageName());
         dismissAllowingStateLoss();
     }
 
     private void showLoadingLogging(){
         aboutQStartText.setVisibility(View.GONE);
-        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("qkt", MODE_PRIVATE);
-        sharedPreferences.edit().putString(am_mwql, k).apply();
         loading.setVisibility(View.VISIBLE);
         roundButton.setOnClickListener(new View.OnClickListener() {
             @Override

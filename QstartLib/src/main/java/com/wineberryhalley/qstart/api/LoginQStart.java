@@ -126,10 +126,8 @@ public static void logOut(){
     private static LoginInterface logingListener;
     private static boolean writePermission = false;
     private static String abb = "jeje";
-    public static void init(Activity context, String key, String abu) {
+    public static void init(Activity context, String abu) {
         goodInit = true;
-        SharedPreferences sharedPreferences = context.getSharedPreferences("qkt", MODE_PRIVATE);
-        sharedPreferences.edit().putString(am_mwql, key).apply();
         abb = abu;
         if (context instanceof LoginInterface) {
             logingListener = (LoginInterface) context;
@@ -138,10 +136,8 @@ public static void logOut(){
         Animatoo.animateSlideDown(context);
     }
 
-    public static void initWritePermission(Activity context, String key) {
+    public static void initWritePermission(Activity context) {
         goodInit = true;
-        SharedPreferences sharedPreferences = context.getSharedPreferences("qkt", MODE_PRIVATE);
-        sharedPreferences.edit().putString(am_mwql, key).apply();
         if (context instanceof LoginInterface) {
             logingListener = (LoginInterface) context;
         }
