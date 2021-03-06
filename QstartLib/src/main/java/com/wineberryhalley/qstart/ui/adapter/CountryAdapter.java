@@ -12,13 +12,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.wineberryhalley.qstart.R;
-import com.wineberryhalley.qstart.base.BaseAdapter;
-import com.wineberryhalley.qstart.base.PicassoUtils;
+import com.wineberryhalley.qstart.base.QAdapter;
+import com.wineberryhalley.qstart.base.QPicassoUtils;
 import com.wineberryhalley.qstart.utils.Country;
 
 import java.util.ArrayList;
 
-public class CountryAdapter extends BaseAdapter<CountryAdapter.CountryHolder, Country> {
+public class CountryAdapter extends QAdapter<CountryAdapter.CountryHolder, Country> {
 
     public CountryAdapter(Activity activity, ArrayList<Country> arrayList){
         config(activity, arrayList);
@@ -85,14 +85,14 @@ private LottieAnimationView lt;
                 cardView.setCardBackgroundColor(getContext().getResources().getColor(R.color.dark_qs));
                 tt.setTextColor(Color.WHITE);
                 lt.setVisibility(View.VISIBLE);
-                PicassoUtils.loadCountryFlag(model.getAlpha2Code(), img_country, lt);
+                QPicassoUtils.loadCountryFlag(model.getAlpha2Code(), img_country, lt);
             }else{
             //    Log.e("MAIN", "setConfig: "+model.getFlag());
                 cardView.setCardBackgroundColor(Color.WHITE);
                tt.setTextColor(getContext().getResources().getColor(R.color.black2_qs));
                 tt.setText(model.getNameTranslated());
                 lt.setVisibility(View.VISIBLE);
-                PicassoUtils.loadCountryFlag(model.getAlpha2Code(), img_country, lt);
+                QPicassoUtils.loadCountryFlag(model.getAlpha2Code(), img_country, lt);
             }
         }
 

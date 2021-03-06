@@ -12,7 +12,7 @@ import androidx.fragment.app.FragmentManager;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.wineberryhalley.qstart.R;
 
-public abstract class BottomBaseShet extends BottomSheetDialogFragment {
+public abstract class BottomQShet extends BottomSheetDialogFragment {
 
     public abstract int layoutID();
 

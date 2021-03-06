@@ -1,7 +1,5 @@
 package com.wineberryhalley.qstart.api;
 
-import android.content.SharedPreferences;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -9,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.wineberryhalley.qstart.R;
-import com.wineberryhalley.qstart.base.BottomBaseShet;
+import com.wineberryhalley.qstart.base.BottomQShet;
 import com.wineberryhalley.qstart.base.User;
 import com.wineberryhalley.qstart.ui.views.AboutQStartText;
 import com.wineberryhalley.qstart.ui.views.ImageLoadingView;
@@ -17,10 +15,7 @@ import com.wineberryhalley.qstart.ui.views.RoundButton;
 import com.wineberryhalley.qstart.utils.LoginInterface;
 import com.wineberryhalley.qstart.utils.Timer;
 
-import static android.content.Context.MODE_PRIVATE;
-import static com.wineberryhalley.qstart.api.Qa.am_mwql;
-
-public class LoginQStartBottom extends BottomBaseShet implements Qa.UserListener {
+public class LoginQStartBottom extends BottomQShet implements Qa.UserListener {
     protected LoginQStartBottom(){
 
     }

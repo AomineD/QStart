@@ -6,9 +6,9 @@ import android.widget.TextView;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.wineberryhalley.qstart.R;
-import com.wineberryhalley.qstart.base.BaseFragment;
+import com.wineberryhalley.qstart.base.QFragment;
 
-public class IntroFragment extends BaseFragment {
+public class IntroFragment extends QFragment {
 
     public int pos;
     public int posNext;

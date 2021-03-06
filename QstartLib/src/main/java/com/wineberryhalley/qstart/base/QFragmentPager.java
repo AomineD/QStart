@@ -1,15 +1,14 @@
 package com.wineberryhalley.qstart.base;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
 import java.util.ArrayList;
 
-public abstract class BaseFragmentPager<T> extends FragmentStatePagerAdapter {
+public abstract class QFragmentPager<T> extends FragmentStatePagerAdapter {
 
-    public BaseFragmentPager(@NonNull FragmentManager fm, int behavior, ArrayList<T> a){
+    public QFragmentPager(@NonNull FragmentManager fm, int behavior, ArrayList<T> a){
         super(fm, behavior);
         this.list = a;
     }
@@ -17,8 +16,8 @@ public abstract class BaseFragmentPager<T> extends FragmentStatePagerAdapter {
 
     @NonNull
     @Override
-    public BaseFragment getItem(int position) {
-        return (BaseFragment) list.get(position);
+    public QFragment getItem(int position) {
+        return (QFragment) list.get(position);
     }
 
     @Override

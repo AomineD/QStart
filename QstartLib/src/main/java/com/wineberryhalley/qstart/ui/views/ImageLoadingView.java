@@ -10,7 +10,7 @@ import android.widget.RelativeLayout;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.wineberryhalley.qstart.R;
-import com.wineberryhalley.qstart.base.PicassoUtils;
+import com.wineberryhalley.qstart.base.QPicassoUtils;
 
 public class ImageLoadingView extends RelativeLayout {
 
@@ -75,24 +75,24 @@ if(assetName != null && !assetName.isEmpty()){
 
     public void loadImg(String url){
         if(!url.isEmpty() && img != null && loading_root != null)
-        PicassoUtils.loadImageWithLoading(url, img, loading_root);
+        QPicassoUtils.loadImageWithLoading(url, img, loading_root);
     }
 
     public void loadImg(int rawFile){
         if(rawFile != 0 && img != null && loading_root != null)
-            PicassoUtils.loadImageWithLoading(rawFile, img, loading_root);
+            QPicassoUtils.loadImageWithLoading(rawFile, img, loading_root);
     }
 
 
     public void loadImgRound(String url, int rounded){
         if(!url.isEmpty() && img != null && loading_root != null)
-            PicassoUtils.loadImageWithLoading(url, rounded, img, loading_root);
+            QPicassoUtils.loadImageWithLoading(url, rounded, img, loading_root);
     }
 
 
     public void loadImgRound(int rawFile, int rounded){
         if(rawFile != 0 && img != null && loading_root != null)
-            PicassoUtils.loadImageWithLoading(rawFile, rounded, img, loading_root);
+            QPicassoUtils.loadImageWithLoading(rawFile, rounded, img, loading_root);
     }
 
     public void playAnim(){
@@ -104,11 +104,11 @@ if(assetName != null && !assetName.isEmpty()){
 
     public void loadImgCircle(int rawFile){
         if(rawFile != 0 && img != null && loading_root != null)
-            PicassoUtils.loadCircleImgWithLoading(rawFile, img, loading_root);
+            QPicassoUtils.loadCircleImgWithLoading(rawFile, img, loading_root);
     }
     public void loadImgCircle(String url){
         if(!url.isEmpty() && img != null && loading_root != null)
-            PicassoUtils.loadCircleImgWithLoading(url, img, loading_root);
+            QPicassoUtils.loadCircleImgWithLoading(url, img, loading_root);
     }
 
 

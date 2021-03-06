@@ -26,7 +26,7 @@ import java.util.Random;
 
 import static androidx.core.content.ContextCompat.getColor;
 
-public abstract class BaseFragment extends Fragment {
+public abstract class QFragment extends Fragment {
 
 
     @Override
@@ -40,7 +40,7 @@ public abstract class BaseFragment extends Fragment {
         return initialized;
     }
     public abstract Fragment lastFragment();
-    public BaseFragment homeFragment;
+    public QFragment homeFragment;
 
 
 

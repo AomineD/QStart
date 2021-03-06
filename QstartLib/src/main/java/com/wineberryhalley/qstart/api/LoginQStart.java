@@ -41,8 +41,8 @@ import com.daimajia.androidanimations.library.YoYo;
 import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.android.material.snackbar.Snackbar;
 import com.wineberryhalley.qstart.R;
-import com.wineberryhalley.qstart.base.BottomBaseShet;
-import com.wineberryhalley.qstart.base.PicassoUtils;
+import com.wineberryhalley.qstart.base.BottomQShet;
+import com.wineberryhalley.qstart.base.QPicassoUtils;
 import com.wineberryhalley.qstart.base.User;
 import com.wineberryhalley.qstart.ui.adapter.CountryAdapter;
 import com.wineberryhalley.qstart.ui.views.RoundButton;
@@ -57,7 +57,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Locale;
 
-import static com.wineberryhalley.qstart.api.Qa.am_mwql;
 import static com.wineberryhalley.qstart.api.Qa.ke_res;
 import static com.wineberryhalley.qstart.api.Qa.saveUser;
 import static com.wineberryhalley.qstart.utils.TextU.makeLinkSpan;
@@ -1222,13 +1221,13 @@ if(selected == null){
     txt.setText(R.string.non_c);
 }else{
     txt.setText(selected.getNameTranslated());
-    PicassoUtils.loadCountryFlag(selected.getAlpha2Code(), country_flag, lt_country);
+    QPicassoUtils.loadCountryFlag(selected.getAlpha2Code(), country_flag, lt_country);
 }
 this.c = selected;
     }
     private Country c;
 
-    public static class CountrySelection extends BottomBaseShet{
+    public static class CountrySelection extends BottomQShet {
 
         protected CountrySelection(LoginQStart c, ArrayList<Country> arrayList, SelectedCountryListener listener){
             countries.addAll(arrayList);
@@ -1277,7 +1276,7 @@ select_btn.setOnClickListener(new View.OnClickListener() {
     }
 
 
-    public static class RequireDialog extends BottomBaseShet{
+    public static class RequireDialog extends BottomQShet {
 
         private DialogInterface.OnDismissListener onDismissListener;
         protected RequireDialog(DialogInterface.OnDismissListener dismissListener){

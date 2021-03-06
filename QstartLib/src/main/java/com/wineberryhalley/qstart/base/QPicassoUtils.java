@@ -33,7 +33,7 @@ import java.io.InputStream;
 import jp.wasabeef.picasso.transformations.CropCircleTransformation;
 import jp.wasabeef.picasso.transformations.RoundedCornersTransformation;
 
-public class PicassoUtils {
+public class QPicassoUtils {
 
 public static void loadImageIn(String img, ImageView imgview){
     Picasso.get().load(Uri.parse(img)).fit().into(imgview);

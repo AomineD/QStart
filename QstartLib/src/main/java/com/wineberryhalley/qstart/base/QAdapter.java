@@ -18,7 +18,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 
-public  abstract class BaseAdapter<T, L> extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public  abstract class QAdapter<T, L> extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     protected abstract int resLayout();
     protected void config(Activity context, ArrayList<L> list){
         this.context = context;

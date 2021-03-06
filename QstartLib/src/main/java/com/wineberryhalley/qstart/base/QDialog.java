@@ -12,16 +12,16 @@ import androidx.core.app.ActivityCompat;
 
 import com.wineberryhalley.qstart.R;
 
-public abstract class BaseDialog extends AlertDialog {
-    protected BaseDialog(@NonNull Context context) {
+public abstract class QDialog extends AlertDialog {
+    protected QDialog(@NonNull Context context) {
         super(context);
     }
 
-    protected BaseDialog(@NonNull Context context, int themeResId) {
+    protected QDialog(@NonNull Context context, int themeResId) {
         super(context, themeResId);
     }
 
-    protected BaseDialog(@NonNull Context context, boolean cancelable, @Nullable OnCancelListener cancelListener) {
+    protected QDialog(@NonNull Context context, boolean cancelable, @Nullable OnCancelListener cancelListener) {
         super(context, cancelable, cancelListener);
     }
 

@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public abstract class BaseActivityNoStatus extends AppCompatActivity {
+public abstract class QActivityNoStatus extends AppCompatActivity {
     public abstract void Main();
     public abstract void statusChanged(int pixelesSizeBar);
     public abstract int resLayout();
@@ -34,7 +34,7 @@ public abstract class BaseActivityNoStatus extends AppCompatActivity {
 
     }
 
-    public static BaseActivityNoStatus main;
+    public static QActivityNoStatus main;
 
 
     @Override
@@ -64,7 +64,7 @@ public abstract class BaseActivityNoStatus extends AppCompatActivity {
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
-                int dpactual =    transparentStatusAndNavigation(BaseActivityNoStatus.this);
+                int dpactual =    transparentStatusAndNavigation(QActivityNoStatus.this);
 
                 runOnUiThread(runnable(dpactual));
 

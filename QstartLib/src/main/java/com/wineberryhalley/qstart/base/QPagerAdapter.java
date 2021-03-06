@@ -1,7 +1,6 @@
 package com.wineberryhalley.qstart.base;
 
 import android.app.Activity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +10,7 @@ import androidx.viewpager.widget.PagerAdapter;
 
 import java.util.ArrayList;
 
-public abstract class BasePagerAdapter<T, L> extends PagerAdapter {
+public abstract class QPagerAdapter<T, L> extends PagerAdapter {
     private ArrayList<T> listing = new ArrayList<>();
     private Activity activity;
     public void config(Activity activity, ArrayList<T> kust, L mod){
@@ -26,13 +25,13 @@ private L madal;
     @Override
     public int getCount() {
         return listing.size();
-    }private BaseAdapter.onClickPos<L> clickPos;
+    }private QAdapter.onClickPos<L> clickPos;
 
-    public void setClickPos(BaseAdapter.onClickPos<L> listener){
+    public void setClickPos(QAdapter.onClickPos<L> listener){
         this.clickPos = listener;
     }
 
-    public BaseAdapter.onClickPos<L> getClickPos(){
+    public QAdapter.onClickPos<L> getClickPos(){
         return clickPos;
     }
 

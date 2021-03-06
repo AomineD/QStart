@@ -11,12 +11,12 @@ import android.view.View;
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.rd.PageIndicatorView;
 import com.wineberryhalley.qstart.R;
-import com.wineberryhalley.qstart.base.BaseActivityNoStatus;
+import com.wineberryhalley.qstart.base.QActivityNoStatus;
 import com.wineberryhalley.qstart.ui.views.RoundButton;
 
 import java.util.ArrayList;
 
-public class IntroQStart extends BaseActivityNoStatus {
+public class IntroQStart extends QActivityNoStatus {
 
 
     public static void startIntro(Context c){

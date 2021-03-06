@@ -7,11 +7,11 @@ import android.widget.TextView;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.wineberryhalley.qstart.R;
-import com.wineberryhalley.qstart.base.BasePagerAdapter;
+import com.wineberryhalley.qstart.base.QPagerAdapter;
 
 import java.util.ArrayList;
 
-public class IntroPagerAdapter extends BasePagerAdapter<IntroObj, Object>{
+public class IntroPagerAdapter extends QPagerAdapter<IntroObj, Object> {
 
     public IntroPagerAdapter(Activity activity, ArrayList<IntroObj> a) {
 config(activity, a, null);

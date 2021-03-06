@@ -2,21 +2,19 @@ package com.wineberryhalley.qstart.ui.views;
 
 import android.app.Activity;
 import android.content.Context;
-import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.wineberryhalley.qstart.R;
-import com.wineberryhalley.qstart.base.BaseDialog;
+import com.wineberryhalley.qstart.base.QDialog;
 import com.wineberryhalley.qstart.utils.Timer;
 
-public class WebFloating extends BaseDialog {
+public class WebFloating extends QDialog {
 
     private Activity activity;
     public static void showWeb(Context a){
