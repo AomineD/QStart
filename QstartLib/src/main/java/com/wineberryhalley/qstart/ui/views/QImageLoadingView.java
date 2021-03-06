@@ -12,19 +12,19 @@ import com.airbnb.lottie.LottieAnimationView;
 import com.wineberryhalley.qstart.R;
 import com.wineberryhalley.qstart.base.QPicassoUtils;
 
-public class ImageLoadingView extends RelativeLayout {
+public class QImageLoadingView extends RelativeLayout {
 
-    public ImageLoadingView(Context context, AttributeSet attrs) {
+    public QImageLoadingView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(attrs);
     }
 
-    public ImageLoadingView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public QImageLoadingView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(attrs);
     }
 
-    public ImageLoadingView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public QImageLoadingView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         init(attrs);
     }

@@ -10,7 +10,7 @@ import com.wineberryhalley.qstart.R;
 import com.wineberryhalley.qstart.base.BottomQShet;
 import com.wineberryhalley.qstart.base.User;
 import com.wineberryhalley.qstart.ui.views.AboutQStartText;
-import com.wineberryhalley.qstart.ui.views.ImageLoadingView;
+import com.wineberryhalley.qstart.ui.views.QImageLoadingView;
 import com.wineberryhalley.qstart.ui.views.RoundButton;
 import com.wineberryhalley.qstart.utils.LoginInterface;
 import com.wineberryhalley.qstart.utils.Timer;
@@ -83,7 +83,7 @@ loginQStartBottom.isRequired = true;
         return R.layout.l_q_frw;
     }
 
-    private ImageLoadingView img;
+    private QImageLoadingView img;
     private RoundButton roundButton, closeButton;
     private LottieAnimationView loading;
     private TextView textView;

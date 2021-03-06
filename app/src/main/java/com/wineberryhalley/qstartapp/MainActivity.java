@@ -12,16 +12,15 @@ import android.widget.Toast;
 
 import com.wineberryhalley.qstart.base.User;
 import com.wineberryhalley.qstart.api.LoginQStart;
-import com.wineberryhalley.qstart.ui.views.ImageLoadingView;
+import com.wineberryhalley.qstart.ui.views.QImageLoadingView;
 import com.wineberryhalley.qstart.ui.views.QStartLoginButton;
 import com.wineberryhalley.qstart.ui.views.RoundButton;
 import com.wineberryhalley.qstart.utils.LoginInterface;
 import com.wineberryhalley.qstart.api.LoginQStartBottom;
-import com.wineberryhalley.qstart.api.Qa;
 
 public class MainActivity extends AppCompatActivity implements LoginInterface {
 RoundButton b;
-ImageLoadingView imageLoadingView;
+QImageLoadingView imageLoadingView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
