@@ -109,7 +109,7 @@ queue = Volley.newRequestQueue(activity);
         StringRequest jsonArrayRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String st) {
-
+         //       Log.e("MAIN", "onResponse: "+st );
                 try {
                     JSONObject response = new JSONObject(st);
                //     Log.e("MAIN", "onResponse: "+response.toString() );
@@ -144,6 +144,7 @@ if(success(response)) {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                Log.e("MAIN", "onErrorResponse: "+error );
                 listenerGenre.onError(error.getMessage());
                 queue.getCache().clear();
             }

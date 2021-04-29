@@ -731,7 +731,7 @@ else
     private String TAG ="MAIN";
     @Override
     public void onError(String erno) {
-     //   Log.e(TAG, "onError: "+erno );
+        Log.e(TAG, "onError: "+erno );
             showError(erno, true);
     }
 

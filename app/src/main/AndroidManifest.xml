@@ -13,8 +13,9 @@
 
         <meta-data
             android:name="com.wine.key.app"
-            android:value="webo"
+            android:value="Lpq7DROXRGQyQB4OZuQRRqCZ4hM4YvSvNnq4i+E="
             />
+
         <activity android:name="com.wineberryhalley.qstartapp.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
